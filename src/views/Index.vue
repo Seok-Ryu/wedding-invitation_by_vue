@@ -1,5 +1,5 @@
 <template>
-    <div id="index">
+    <v-container id="index" max-width="960" class="pa-0">
         <Intro></Intro>
         <LocationMap></LocationMap>
         <Notice></Notice>
@@ -9,7 +9,7 @@
 <!--        <LinkInfos></LinkInfos>-->
         <Comments></Comments>
 
-    </div>
+    </v-container>
 </template>
 
 <script>
