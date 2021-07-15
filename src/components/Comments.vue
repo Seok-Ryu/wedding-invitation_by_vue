@@ -1,10 +1,8 @@
 <template>
-    <div id="comment">
-        <h3> comment </h3>
-        <div id = 'disqus_thread'>
-
+    <v-container id="comment">
+        <div id="lv-container" data-id="city" data-uid="MTAyMC81MzYyMy8zMDA5Ng==">
         </div>
-    </div>
+    </v-container>
 </template>
 
 <script>

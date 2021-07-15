@@ -1,10 +1,12 @@
 <template>
-    <div id="location_map">
+    <v-container id="location_map">
         <v-img src="images/info.png"></v-img>
-        <div id="map">
+        <v-responsive class="map-container pl-6 pr-6">
+            <div id="map">
 
-        </div>
-    </div>
+            </div>
+        </v-responsive>
+    </v-container>
 </template>
 
 <script>
@@ -12,8 +14,8 @@
     const LATITUDE = 126.9838961;
     const elementId = 'map';
 
-
     const createMap = (longitude, latitude) => {
+        console.log('pi')
         const container = document.getElementById(elementId);
         const options = {
             // eslint-disable-next-line no-undef
@@ -83,5 +85,20 @@
 </script>
 
 <style scoped>
+    #location_map {
+        /*display: flex;*/
+    }
+
+    .map-container {
+
+        /*margin-left: -100%;*/
+        /*margin-top: 40%;*/
+    }
+
+    #map {
+        min-height: 398px;
+        min-width: 592px;
+    }
+
 
 </style>

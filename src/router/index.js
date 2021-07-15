@@ -19,6 +19,6 @@ export default new VueRouter({
             path: '/test',
             name: 'Test',
             component: Test,
-        }
+        },
     ],
 });

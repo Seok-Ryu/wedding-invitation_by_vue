@@ -30,6 +30,19 @@
     <script type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=194d203f9fed44b8d0edf6c4158b8863&libraries=services"></script>
     <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script type="text/javascript">
+      (function(_document, type) {
+        var j, e = _document.getElementsByTagName(type)[0];
+
+        if (typeof LivereTower === 'function') { return; }
+
+        j = _document.createElement(type);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
 <!--    <script type="text/javascript" src="https://ryuliah.disqus.com/embed.js"></script>-->
   </head>
   <body>
@@ -37,27 +50,10 @@
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
-    <!-- 코스모스팜 소셜댓글 시작 -->
-    <script id="cosmosfarm-comments-script" type="text/javascript" src="https://plugin.cosmosfarm.com/comments.js"></script>
-    <div id="cosmosfarm-comments" data-plugin-id="1850272495299577" data-href="https://ryuliah.netlify.app" data-width="960" data-row="10"><a href="http://www.cosmosfarm.com/plugin/comments">코스모스팜 소셜댓글</a></div>
-    <!-- 코스모스팜 소셜댓글 종료 -->
     <!-- 라이브리 시티 설치 코드 -->
-    <div id="lv-container" data-id="city" data-uid="MTAyMC81MzYyMy8zMDA5Ng==" style="max-width: 960px">
-      <script type="text/javascript">
-        (function(d, s) {
-          var j, e = d.getElementsByTagName(s)[0];
+    <!--<div id="lv-container" data-id="city" data-uid="MTAyMC81MzYyMy8zMDA5Ng==" style="max-width: 960px">
 
-          if (typeof LivereTower === 'function') { return; }
-
-          j = d.createElement(s);
-          j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-          j.async = true;
-
-          e.parentNode.insertBefore(j, e);
-        })(document, 'script');
-      </script>
-      <noscript> 라이브리 댓글 작성을 위해 JavaScript를 활성화 해주세요</noscript>
-    </div>
+    </div>-->
     <!-- 시티 설치 코드 끝 -->
     <!-- built files will be auto injected -->
   </body>

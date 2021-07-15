@@ -6,14 +6,14 @@
         <Contact></Contact>
         <Story></Story>
         <Share></Share>
-<!--        <LinkInfos></LinkInfos>-->
+        <Gallery></Gallery>
         <Comments></Comments>
-
+        <LinkInfos></LinkInfos>
     </v-container>
 </template>
 
 <script>
-    // import LinkInfos from '../components/LinkInfos';
+    import LinkInfos from '../components/LinkInfos';
     import Comments from "@/components/Comments";
     import LocationMap from "@/components/LocationMap";
     import Intro from "@/components/Intro";
@@ -21,16 +21,18 @@
     import Contact from "@/components/Contact";
     import Story from "@/components/Story";
     import Share from "@/components/Share";
+    import Gallery from "@/components/Gallery";
 
     export default {
         name: "Index",
         components: {
+            Gallery,
             Share,
             Story,
             Contact,
             Notice,
             Intro,
-            // LinkInfos,
+            LinkInfos,
             LocationMap,
             Comments
         }

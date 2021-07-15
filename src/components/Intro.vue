@@ -1,7 +1,7 @@
 <template>
-    <div id="intro">
+    <v-container id="intro">
         <v-img src="images/intro.png"></v-img>
-    </div>
+    </v-container>
 </template>
 
 <script>

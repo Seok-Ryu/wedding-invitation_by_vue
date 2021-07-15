@@ -60,13 +60,12 @@
                 console.log('after init', Kakao.isInitialized());
             },
             sendKakaoMessage() {
+                this.kakaoInit();
                 console.log('send here')
                 // eslint-disable-next-line no-undef
-                Kakao.Link.createScrapButton({
-                    container: '#kakao-link-btn',
+                Kakao.Link.sendScrap({
                     requestUrl: 'https://developers.kakao.com',
-                })
-                return;
+                });
             }
         }
     }
