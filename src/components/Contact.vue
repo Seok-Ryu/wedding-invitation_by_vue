@@ -8,39 +8,44 @@
                 </div>
                 <div class="icon-area d-flex">
                     <v-btn
-                            class="pr-2"
                             text
                             color="primary"
+                            small
                             href='tel:01097371233'
                     >
-                        <v-icon left>
+                        <v-icon
+                                size="18"
+                        >
                             mdi-phone-in-talk-outline
                         </v-icon>
                     </v-btn>
                     <v-btn
-                            class="pr-2"
                             color="primary"
                             text
+                            small
                             href='http://qr.kakao.com/talk/geQ_Uj1WiGWinLXTpeX8CjC9lTY-'
                             target="_blank"
                     >
-                        <v-icon left>
+                        <v-icon
+                                size="18"
+                        >
                             mdi-message-outline
                         </v-icon>
                     </v-btn>
                     <v-btn
-                            class="pr-2"
                             color="primary"
                             text
+                            small
                             href='https://qr.kakaopay.com/281006011000003410616386'
                             target="_blank"
+                            v-if="false"
                     >
-                        KAKAO-PAY
+                        Kakao-Pay
                     </v-btn>
                     <v-btn
-                            class="pr-2"
                             color="primary"
                             text
+                            small
                             href='https://toss.im/_m/TWcYNcA3'
                             target="_blank"
                     >
@@ -106,10 +111,11 @@
                     <v-btn
                             class="pr-2"
                             text
+                            small
                             color="primary"
                             href='tel:01043001867'
                     >
-                        <v-icon left>
+                        <v-icon size="18">
                             mdi-phone-in-talk-outline
                         </v-icon>
                     </v-btn>
@@ -117,10 +123,11 @@
                             class="pr-2"
                             color="primary"
                             text
+                            small
                             href='http://qr.kakao.com/talk/UVtGcjnLd4AatuFKwq6z0iPx0D4-'
                             target="_blank"
                     >
-                        <v-icon left>
+                        <v-icon size="18">
                             mdi-message-outline
                         </v-icon>
                     </v-btn>
@@ -128,8 +135,10 @@
                             class="pr-2"
                             color="primary"
                             text
+                            small
                             href='https://qr.kakaopay.com/281006011000000817056775'
                             target="_blank"
+                            v-if="false"
                     >
                         KAKAO-PAY
                     </v-btn>
@@ -137,6 +146,7 @@
                             class="pr-2"
                             color="primary"
                             text
+                            small
                             href='https://toss.im/_m/VmrctDP4'
                             target="_blank"
                     >
