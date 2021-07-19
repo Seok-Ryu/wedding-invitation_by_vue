@@ -47,28 +47,6 @@
                 </v-col>
             </v-row>
         </v-responsive>
-        <!--<div class="map-area-container">
-            <v-img src="images/info.png" class="image-container"></v-img>
-            <v-responsive class="map-container pl-6 pr-6">
-                <div id="map">
-
-                </div>
-            </v-responsive>
-        </div>
-        <v-container>
-            <v-row class="ml-8 mr-8 mt-4 mb-4" justify="space-between">
-                <v-col class="pa-0" md="4">
-                    <v-btn class="elevation-0 custom-button">
-                        캘린더 등록
-                    </v-btn>
-                </v-col>
-                <v-col class="pa-0"  md="4">
-                    <v-btn class="elevation-0 custom-button">
-                        카카오맵 보기
-                    </v-btn>
-                </v-col>
-            </v-row>
-        </v-container>-->
     </v-container>
 </template>
 
@@ -76,6 +54,8 @@
     const LONGITUDE = 37.5213937;
     const LATITUDE = 126.9838961;
     const elementId = 'map';
+
+    let map;
 
     const createMap = (longitude, latitude) => {
         const container = document.getElementById(elementId);
@@ -86,37 +66,31 @@
         };
 
         // eslint-disable-next-line no-undef
-        const map = new kakao.maps.Map(container, options);
+        map = new kakao.maps.Map(container, options);
         // note: zoom disable
-        map.setZoomable(false);
-
-        return map;
+        // map.setZoomable(false);
     }
 
-    const createMarker = (longitude, latitude, type, map) => {
+    const createMarker = (bounds, longitude, latitude, type) => {
         // eslint-disable-next-line no-undef
         const position  = new kakao.maps.LatLng(longitude, latitude);
+        bounds.extend(position);
 
-        if (type === 'wed') {
+        let markerImage;
+
+        if (type === 'WED') {
             const imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png'; // 마커이미지의 주소
             // eslint-disable-next-line no-undef
             const imageSize = new kakao.maps.Size(24, 35); // 마커이미지의 크기
             // const imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
             // const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
             // eslint-disable-next-line no-undef
-            const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-            // eslint-disable-next-line no-undef
-            const marker = new kakao.maps.Marker({
-                image: markerImage,
-                position,
-                map,
-            });
-
-            return marker;
+            markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
         }
 
         // eslint-disable-next-line no-undef
         const marker = new kakao.maps.Marker({
+            image: markerImage,
             position,
             map,
         });
@@ -125,19 +99,27 @@
     }
 
     const createKakaoMap = () => {
-        const map = createMap(LONGITUDE, LATITUDE);
-        const markerOfWeddingLocation = createMarker(37.5213786,126.9838787, 'wed');
-        const station = createMarker(37.5225786,126.9745787);
+        createMap(LONGITUDE, LATITUDE);
+        // eslint-disable-next-line no-undef
+        const bounds = new kakao.maps.LatLngBounds();
+        const markerOfWeddingLocation = createMarker(bounds, 37.5213786,126.9838787, 'WED');
+        const markerOfStation = createMarker(bounds, 37.5225786,126.9745787);
 
         markerOfWeddingLocation.setMap(map);
-        station.setMap(map)
+        markerOfStation.setMap(map)
+        map.setBounds(bounds);
+
+        // eslint-disable-next-line no-undef
+        const zoomControl = new kakao.maps.ZoomControl();
+        // eslint-disable-next-line no-undef
+        map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
     }
 
     const getContainer = () => {
         // return window;
         const container =  document.getElementById('location_map');
         const element = container.getElementsByClassName('image-container')[0]
-        console.log(element)
+
         return element;
     }
 
@@ -161,6 +143,13 @@
             },
             myEventHandler(event) {
                 console.log(event)
+            },
+            redrawMap() {
+                console.log('test')
+                console.log(map.getLevel())
+                map.setLevel(map.getLevel() + 1);
+                console.log(map.getLevel())
+                map.relayout();
             }
         }
     }
@@ -185,17 +174,17 @@
         /*margin-bottom: 24px;*/
     }
 
-    /*.map-area-container {
-        display: flex;
-    }*/
-
     #map {
-        width: 656px;
-        height: 398px;
         min-height: 199px;
-        min-width: 296px;
+        min-width: 311px;
         /*max-height: 900px;*/
         /*max-width: 1500px;*/
+        /* 360 기준*/
+        width: 311px;
+        height: 199px;
+        /* 720 기준 */
+        /*width: 656px;*/
+        /*height: 398px;*/
     }
 
 
