@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="custom-content-container">
         <h3> sub </h3>
         <div>
             <a href='http://kko.to/uepuFiT4o'>
@@ -31,8 +31,14 @@
                 <v-img src= '/images/kakaolink_btn.png' width='65' height='65'/>
             </v-btn>
         </div>
-
-
+        <div>
+            <v-btn @click="sendKakaoMessage3" id='kakao-link-btn3' width="65" height='65'>
+                test 22
+            </v-btn>
+        </div>
+        <div v-if="kakaoInit()">
+<!--            <div>{{sendKakaoMessage3()}}</div>-->
+        </div>
     </div>
 </template>
 
@@ -47,7 +53,8 @@
             kakaoInit() {
                 // eslint-disable-next-line no-undef
                 if(Kakao.isInitialized()) {
-                    return;
+                    console.log('already init');
+                    return true;
                 }
 
                 // eslint-disable-next-line no-undef
@@ -58,12 +65,24 @@
                 Kakao.isInitialized();
                 // eslint-disable-next-line no-undef
                 console.log('after init', Kakao.isInitialized());
+                return true;
             },
             sendKakaoMessage() {
                 this.kakaoInit();
                 console.log('send here')
                 // eslint-disable-next-line no-undef
                 Kakao.Link.sendScrap({
+                    requestUrl: 'https://developers.kakao.com',
+                });
+                //ErrorCode(4002)
+                //UUID(0bb80215-00ac-41b8-a578-01a0dc9f3d8c)
+            },
+            sendKakaoMessage3() {
+                this.kakaoInit();
+                console.log('send here 333')
+                // eslint-disable-next-line no-undef
+                Kakao.Link.createScrapButton({
+                    container: '#kakao-link-btn3',
                     requestUrl: 'https://developers.kakao.com',
                 });
             }

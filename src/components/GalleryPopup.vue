@@ -3,14 +3,24 @@
 <!--        <div> {{id}}</div>-->
 <!--        <div> {{model}}</div>-->
         <v-carousel
-                v-model="model"
+                v-model="id"
                 hide-delimiter-background
-                show-arrows-on-hover
+                class="carousel-container"
         >
+            <!--<v-img
+                    v-for="(item, index) in items"
+                    :key="index"
+                    :src="item.src"
+                    :aspect-ratio="16/9"
+                    class="carousel-item"
+            ></v-img>-->
             <v-carousel-item
                     v-for="(item, index) in items"
                     :key="index"
                     :src="item.src"
+                    :aspect-ratio="16/9"
+                    contain
+                    class="carousel-item"
             >
             </v-carousel-item>
         </v-carousel>
@@ -38,18 +48,17 @@
     export default {
         name: "GalleryPopup",
         props: {
-          id: {
-              type: Number,
-              default: 0,
-              required: true
-          }
+            id: {
+                type: Number,
+                required: true
+            },
         },
         mounted() {
-          console.log(this.id)
-            this.model = this.id;
+          // console.log(this.dialogInfo.targetItemId)
+            // this.model = this.dialogInfo.targetItemId;
         },
         data: () => ({
-            model: 0,
+            // model: 0,
             // model: this.id,
             items: initGalleryData(),
         }),
@@ -58,6 +67,27 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+    .content-container {
+        background-color: #FFFEF5;
+    }
+
+    .carousel-container {
+        /*height: 80%;*/
+        /*min-height: 800px;*/
+    }
+
+    .carousel-item {
+        /*msin-height: 800px;*/
+        /*@media (max-width: 100px) {
+            .content-container {
+                min-height: 200px;
+            }
+            .v-carousel__item {
+                min-height: 150px;
+            }
+        }*/
+    }
+
 
 </style>

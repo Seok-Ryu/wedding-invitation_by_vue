@@ -1,5 +1,7 @@
 <template>
     <div id="gallery" class="content-container pl-8 pr-8">
+<!--        <div> {{id}}</div>-->
+<!--        <div> {{model}}</div>-->
         <v-carousel
                 v-model="model"
                 hide-delimiter-background
@@ -31,11 +33,24 @@
 
         return items;
     }
+    // initGalleryData();
 
     export default {
         name: "Gallery",
+        props: {
+          id: {
+              type: Number,
+              default: 0,
+              required: true
+          }
+        },
+        mounted() {
+          console.log(this.id)
+            this.model = this.id;
+        },
         data: () => ({
             model: 0,
+            // model: this.id,
             items: initGalleryData(),
         }),
         methods: {
