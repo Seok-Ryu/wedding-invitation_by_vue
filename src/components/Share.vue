@@ -8,7 +8,7 @@
         <v-responsive class="d-flex button-container">
             <v-row class="" justify="space-between" cols="12">
                 <v-col class="col-5">
-                    <v-btn class="elevation-0 custom-button" block @click="isOpenSnackbar = true">
+                    <v-btn class="elevation-0 custom-button" block @click="sendKakaoMessage" >
                         <v-icon left>
                             mdi-phone-in-talk-outline
                         </v-icon>
@@ -27,10 +27,10 @@
         </v-responsive>
         <v-snackbar
                 v-model="isOpenSnackbar"
-                color="warning"
+                :color="snackbarColor"
                 :timeout="2000"
         >
-            아직 미구현 ㅠ
+            {{snackbarText}}
             <template v-slot:action="{ attrs }">
                 <v-btn
                         color="white"
@@ -50,6 +50,8 @@
         name: "Share",
         data: () => ({
             isOpenSnackbar: false,
+            snackbarText: '주소 복사 되었습니다 :)',
+            snackbarColor: '',
         }),
         methods: {
             copyURL() {
@@ -64,7 +66,15 @@
 
                 inputElement.select();
                 document.execCommand("copy");
-                this.isOpenSnackbar = true
+                document.body.removeChild(inputElement);
+                this.snackbarText = '주소 복사 되었습니다 :)';
+                this.snackbarColor = 'primary'
+                this.isOpenSnackbar = true;
+            },
+            sendKakaoMessage() {
+                this.snackbarText = '아직 미구현 ㅠ';
+                this.snackbarColor = 'warning'
+                this.isOpenSnackbar = true;
             }
         }
     }

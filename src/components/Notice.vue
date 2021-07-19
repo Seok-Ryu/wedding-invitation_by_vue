@@ -161,6 +161,7 @@
 
                 inputElement.select();
                 document.execCommand("copy");
+                document.body.removeChild(inputElement);
                 this.isOpenSnackbar = true
 
                 // event.target.select();
