@@ -1,55 +1,114 @@
 <template>
     <div class="custom-content-container">
         <h3> sub </h3>
-        <div>
-            <a href='http://kko.to/uepuFiT4o'>
-                카카오 지도
-            </a>
-        </div>
-        <div>
-            <a href='tel:01097371233'>
-                석류 전화 연결
-            </a>
-        </div>
-        <div>
-            <a href='http://qr.kakao.com/talk/UVtGcjnLd4AatuFKwq6z0iPx0D4-'>
-                다영 카톡 연결
-            </a>
-        </div>
-        <div>
-            <a href='https://toss.im/_m/TWcYNcA3'>
-                석류 토스 연결 (신한 110)
-            </a>
-        </div>
-        <div>
-            <a href='https://qr.kakaopay.com/281006011000000817056775'>
-                다영 카카오 페이
-            </a>
-        </div>
-        <div>
-            <v-btn @click="sendKakaoMessage" id='kakao-link-btn' width="65" height='65'>
-                <v-img src= '/images/kakaolink_btn.png' width='65' height='65'/>
-            </v-btn>
-        </div>
-        <div>
-            <v-btn @click="sendKakaoMessage3" id='kakao-link-btn3' width="65" height='65'>
-                test 22
-            </v-btn>
-        </div>
-        <div v-if="kakaoInit()">
-<!--            <div>{{sendKakaoMessage3()}}</div>-->
-        </div>
+        <button id="authorize_button" style="display: none;">Authorize</button>
+        <button id="signout_button" style="display: none;">Sign Out</button>
+        <pre id="content" style="white-space: pre-wrap;"></pre>
+
     </div>
 </template>
 
 <script>
-    console.log('link test')
+    const CLIENT_ID = '215390870050-lrndk047u8lnlckk9s8721p55u0a0686.apps.googleusercontent.com';
+    const API_KEY = 'Zqn-RO1B-Dj4cfE7WK32uPdZ';
+
+    // Array of API discovery doc URLs for APIs used by the quickstart
+    const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+
+    // Authorization scopes required by the API; multiple scopes can be
+    // included, separated by spaces.
+    const SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
+
+    const authorizeButton = document.getElementById('authorize_button');
+    const signoutButton = document.getElementById('signout_button');
+
+    const updateSigninStatus = (isSignedIn) => {
+        if (isSignedIn) {
+            authorizeButton.style.display = 'none';
+            signoutButton.style.display = 'block';
+            listUpcomingEvents();
+        } else {
+            authorizeButton.style.display = 'block';
+            signoutButton.style.display = 'none';
+        }
+    }
+
+    function listUpcomingEvents() {
+        // eslint-disable-next-line no-undef
+        gapi.client.calendar.events.list({
+            'calendarId': 'primary',
+            'timeMin': (new Date()).toISOString(),
+            'showDeleted': false,
+            'singleEvents': true,
+            'maxResults': 10,
+            'orderBy': 'startTime'
+        }).then(function(response) {
+            var events = response.result.items;
+            appendPre('Upcoming events:');
+
+            if (events.length > 0) {
+                for (var i = 0; i < events.length; i++) {
+                    var event = events[i];
+                    var when = event.start.dateTime;
+                    if (!when) {
+                        when = event.start.date;
+                    }
+                    appendPre(event.summary + ' (' + when + ')')
+                }
+            } else {
+                appendPre('No upcoming events found.');
+            }
+        });
+    }
+
+    const handleAuthClick = () => {
+        // eslint-disable-next-line no-undef
+        gapi.auth2.getAuthInstance().signIn();
+    }
+
+    const handleSignoutClick = () => {
+        // eslint-disable-next-line no-undef
+        gapi.auth2.getAuthInstance().signOut();
+    }
+
+    const appendPre = (message) => {
+        var pre = document.getElementById('content');
+        var textContent = document.createTextNode(message + '\n');
+        pre.appendChild(textContent);
+    }
+
+    const initClient = () => {
+        // eslint-disable-next-line no-undef
+        gapi.client.init({
+            apiKey: API_KEY,
+            clientId: CLIENT_ID,
+            discoveryDocs: DISCOVERY_DOCS,
+            scope: SCOPES
+        }).then(function () {
+            // Listen for sign-in state changes.
+            // eslint-disable-next-line no-undef
+            gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+            // Handle the initial sign-in state.
+            // eslint-disable-next-line no-undef
+            updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+            authorizeButton.onclick = handleAuthClick;
+            signoutButton.onclick = handleSignoutClick;
+        }, function(error) {
+            appendPre(JSON.stringify(error, null, 2));
+        });
+    }
+
     export default {
         name: "LinkInfos",
         mounted() {
-            this.kakaoInit();
+            this.handleClientLoad();
         },
         methods: {
+            handleClientLoad() {
+                // eslint-disable-next-line no-undef
+                gapi.load('client:auth2', initClient);
+            },
             kakaoInit() {
                 // eslint-disable-next-line no-undef
                 if(Kakao.isInitialized()) {

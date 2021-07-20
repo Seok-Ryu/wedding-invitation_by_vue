@@ -1,40 +1,16 @@
 <template>
     <v-main id="index" max-width="720">
-        <Intro></Intro>
-        <LocationMap></LocationMap>
-        <Notice></Notice>
-        <Contact></Contact>
-        <Story></Story>
-        <Gallery></Gallery>
-        <Share></Share>
-        <Comments></Comments>
-<!--        <LinkInfos></LinkInfos>-->
+        <LinkInfos></LinkInfos>
     </v-main>
 </template>
 
 <script>
-    // import LinkInfos from '../components/LinkInfos';
-    import Comments from "@/components/Comments";
-    import LocationMap from "@/components/LocationMap";
-    import Intro from "@/components/Intro";
-    import Notice from "@/components/Notice";
-    import Contact from "@/components/Contact";
-    import Story from "@/components/Story";
-    import Share from "@/components/Share";
-    import Gallery from "@/components/Gallery";
+    import LinkInfos from '../components/LinkInfos';
 
     export default {
         name: "Index",
         components: {
-            Gallery,
-            Share,
-            Story,
-            Contact,
-            Notice,
-            Intro,
-            // LinkInfos,
-            LocationMap,
-            Comments
+            LinkInfos,
         }
     }
 </script>
