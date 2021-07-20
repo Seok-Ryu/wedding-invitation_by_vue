@@ -71,6 +71,7 @@
 
 
 
+    // eslint-disable-next-line no-unused-vars
     function listUpcomingEvents() {
         // eslint-disable-next-line no-undef
         gapi.client.calendar.events.list({
