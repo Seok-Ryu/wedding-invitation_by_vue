@@ -19,8 +19,8 @@
     // included, separated by spaces.
     const SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
 
-    const authorizeButton = document.getElementById('authorize_button');
-    const signoutButton = document.getElementById('signout_button');
+    let authorizeButton = document.getElementById('authorize_button');
+    let signoutButton = document.getElementById('signout_button');
 
     const updateSigninStatus = (isSignedIn) => {
         if (isSignedIn) {
@@ -102,6 +102,8 @@
     export default {
         name: "LinkInfos",
         mounted() {
+            authorizeButton = document.getElementById('authorize_button');
+            signoutButton = document.getElementById('signout_button');
             this.handleClientLoad();
         },
         methods: {
@@ -136,15 +138,6 @@
                 //ErrorCode(4002)
                 //UUID(0bb80215-00ac-41b8-a578-01a0dc9f3d8c)
             },
-            sendKakaoMessage3() {
-                this.kakaoInit();
-                console.log('send here 333')
-                // eslint-disable-next-line no-undef
-                Kakao.Link.createScrapButton({
-                    container: '#kakao-link-btn3',
-                    requestUrl: 'https://developers.kakao.com',
-                });
-            }
         }
     }
 </script>
