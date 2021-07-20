@@ -26,12 +26,50 @@
         if (isSignedIn) {
             authorizeButton.style.display = 'none';
             signoutButton.style.display = 'block';
-            listUpcomingEvents();
+            // listUpcomingEvents();
+            addNewEvent();
         } else {
             authorizeButton.style.display = 'block';
             signoutButton.style.display = 'none';
         }
     }
+
+    const addNewEvent = () => {
+        var event = {
+            'summary': 'test sryu',
+            'location': '800 Howard St., San Francisco, CA 94103',
+            'description': 'A chance to hear more about Google\'s developer products.',
+            'start': {
+                'dateTime': '2021-07-22T09:30:00+09:00',
+                'timeZone': 'Asia/Seoul'
+            },
+            'end': {
+                'dateTime': '2021-07-22T18:30:00+09:00',
+                'timeZone': 'Asia/Seoul'
+            },
+            'attendees': [
+                {'email': 'lpage@example.com'},
+                {'email': 'sbrin@example.com'}
+            ],
+            'reminders': {
+                'useDefault': true,
+                'overrides': [
+                    {'method': 'popup', 'minutes': 10}
+                ]
+            }
+        };
+        // eslint-disable-next-line no-undef
+        var request = gapi.client.calendar.events.insert({
+            'calendarId': 'primary',
+            'resource': event
+        });
+        // eslint-disable-next-line no-undef
+        request.execute(function(event) {
+            appendPre('Event created: ' + event.htmlLink);
+        });
+    }
+
+
 
     function listUpcomingEvents() {
         // eslint-disable-next-line no-undef
