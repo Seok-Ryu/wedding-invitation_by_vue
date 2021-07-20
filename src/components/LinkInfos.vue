@@ -58,6 +58,8 @@
             } else {
                 appendPre('No upcoming events found.');
             }
+        }, function(error) {
+            appendPre(JSON.stringify(error, null, 2));
         });
     }
 
