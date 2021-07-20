@@ -10,7 +10,7 @@
 
 <script>
     const CLIENT_ID = '215390870050-lrndk047u8lnlckk9s8721p55u0a0686.apps.googleusercontent.com';
-    const API_KEY = 'Zqn-RO1B-Dj4cfE7WK32uPdZ';
+    const API_KEY = 'AIzaSyCwJDLMq0a0D4xCqXtDZjHe9oMZutPax6c';
 
     // Array of API discovery doc URLs for APIs used by the quickstart
     const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
