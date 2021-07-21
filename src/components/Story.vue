@@ -37,7 +37,7 @@
                     block
                     :large="true"
                     color="primary"
-                    @click="isOpenSnackbar = true"
+                    v-on:click="linkTo"
             >
                 더 많은 이야기 보기
             </v-btn>
@@ -70,6 +70,9 @@
             isOpenSnackbar: false,
         }),
         methods: {
+            linkTo() {
+                window.open('https://pastoral-airmail-dda.notion.site/48682e04f2f74fb58fb267da077ffe32', '_self')
+            }
         }
     }
 </script>

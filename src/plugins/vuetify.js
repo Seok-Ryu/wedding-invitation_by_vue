@@ -18,6 +18,7 @@ export default new Vuetify({
                 primary: '#FFB74D', //olive
                 secondary: '#ffffff', //black
                 accent: '#263238', //yellow
+                warning: '#E65100',
             }
         },
         options: {

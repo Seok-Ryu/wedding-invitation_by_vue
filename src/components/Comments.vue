@@ -6,36 +6,40 @@
 </template>
 
 <script>
-    const DAUM_POSTCODE_URL = 'https://cdn-city.livere.com/js/embed.dist.js';
+    const COMMENT_SCRIPT_URL = 'https://cdn-city.livere.com/js/embed.dist.js';
 
     export default {
         name: "Comments",
         async mounted() {
-            const daumPostcodeLoaded = document.querySelector(`script[src="${DAUM_POSTCODE_URL}"]`);
+            const commentScript = document.querySelector(`script[src="${COMMENT_SCRIPT_URL}"]`);
 
-            if (!daumPostcodeLoaded) {
-                console.log('loaded')
+            if (!commentScript) {
+                // this.$log.error('er');
+                // console.log(this.$log)
+                await this.addCommentScript();
+            }
+        },
+        methods: {
+            async addCommentScript () {
                 try {
                     await new Promise((resolve, reject) => {
-                        const daumScript = document.createElement('script');
+                        const commentScript = document.createElement('script');
 
-                        daumScript.onload = () => {
+                        commentScript.onload = () => {
                             resolve();
                         };
-                        daumScript.onerror = () => {
+                        commentScript.onerror = () => {
                             reject(new Error('Failed to load daum postcode'));
                         };
-                        daumScript.async = true;
-                        daumScript.src = DAUM_POSTCODE_URL;
+                        commentScript.async = true;
+                        commentScript.src = COMMENT_SCRIPT_URL;
 
-                        document.getElementsByTagName('head')[0].appendChild(daumScript);
+                        document.getElementsByTagName('head')[0].appendChild(commentScript);
                     });
                 } catch (err) {
                     console.error(err);
                 }
-            }
-        },
-        methods: {
+            },
             show() {
 
             }
@@ -43,15 +47,15 @@
     }
     // TODO
     // 1. 구글 캘린더
-
-    // 7. 상수 (CONSTANTS 템플릿에서 어떻게 사용?)
-
-    // 2. 전체적으로 720 사이즈 / 360 사이즈 정리
-
-    // 카카오 페이 계좌이체 링크 가능할까?
+    // 2. 카카오 페이 계좌이체 링크 가능할까?
+    // 3. 링크 타이틀 수정
 
 </script>
 
 <style scoped>
+    .custom-content-container {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
 
 </style>

@@ -134,6 +134,8 @@
 </template>
 
 <script>
+    import { isSupportedCopyCommand, doCopyCommand } from '@/utils';
+
     export default {
         name: "Notice",
         computed: {
@@ -148,7 +150,7 @@
         }),
         methods: {
             copyAddress(event) {
-                if (!document.queryCommandSupported("copy")) {
+                if (!isSupportedCopyCommand()) {
                     this.snackbarText = '복사하기가 지원되지 않는 브라우저에요 :(';
                     this.snackbarColor = 'warning'
                     this.isOpenSnackbar = true;
@@ -156,14 +158,7 @@
                     return;
                 }
 
-                const inputElement = document.createElement("input");
-                inputElement.value = event.target.innerText;
-
-                document.body.appendChild(inputElement);
-
-                inputElement.select();
-                document.execCommand("copy");
-                document.body.removeChild(inputElement);
+                doCopyCommand(event)
 
                 this.snackbarText = '주소가 복사 되었습니다 :)';
                 this.snackbarColor = 'primary'

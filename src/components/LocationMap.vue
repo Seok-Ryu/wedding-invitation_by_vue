@@ -2,7 +2,7 @@
     <v-responsive id="location_map" class="custom-content-container">
         <div class="divider-bar"></div>
         <div class="text-container-1 text-type-black text-type-16 text-align-left">
-            날씨도, 식순도 예측할 수 없는 -
+            날씨도, 식순도, 애드리브도 예측할 수 없는 -
         </div>
         <div class="text-type-olive text-type-20">
             21년 9월 11일 오후 3시 30분

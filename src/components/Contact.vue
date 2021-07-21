@@ -180,7 +180,7 @@
 </template>
 
 <script>
-    import { isMobile } from '@/utils';
+    import { isMobile, isSupportedCopyCommand, doCopyCommand } from '@/utils';
 
     const LINK_TYPE = {
         CALL: 'CALL',
@@ -198,7 +198,7 @@
         }),
         methods: {
             copyAccountInfo(event) {
-                if (!document.queryCommandSupported("copy")) {
+                if (!isSupportedCopyCommand()) {
                     this.snackbarText = '복사하기가 지원되지 않는 브라우저에요 :(';
                     this.snackbarColor = 'warning'
                     this.isOpenSnackbar = true;
@@ -206,14 +206,7 @@
                     return;
                 }
 
-                const inputElement = document.createElement("input");
-                inputElement.value = event.target.innerText;
-
-                document.body.appendChild(inputElement);
-
-                inputElement.select();
-                document.execCommand("copy");
-                document.body.removeChild(inputElement);
+                doCopyCommand(event)
 
                 this.snackbarText = '계좌 번호가 복사 되었습니다 :)';
                 this.snackbarColor = 'primary'
@@ -228,19 +221,7 @@
                     return;
                 }
 
-                switch (type) {
-                    case LINK_TYPE.CALL:
-                        break;
-                    case LINK_TYPE.KAKAO_TALK:
-                        break;
-                    case LINK_TYPE.TOSS:
-                        break;
-                }
-                // const route = this.$router.resolve({path: target});
-                // let route = this.$router.resolve('/link/to/page'); // This also works.
-                // window.open(route.href, '_blank');
-                window.open(target, '_blank');
-
+                window.open(target);
             }
         }
     }
