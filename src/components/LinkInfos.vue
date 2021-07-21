@@ -44,7 +44,7 @@
                 'timeZone': 'Asia/Seoul'
             },
             'end': {
-                'dateTime': '2021-07-22T17:00:00+09:00',
+                'dateTime': '2021-09-11T17:00:00+09:00',
                 'timeZone': 'Asia/Seoul'
             },
             'attendees': [
