@@ -1,5 +1,5 @@
 <template>
-    <v-container id="gallery" class="custom-content-container pl-8 pr-8">
+    <v-responsive id="gallery" class="custom-content-container pl-8 pr-8 pt-6 pb-6">
         <v-row>
             <v-col
                     v-for="(item, index) in items"
@@ -37,7 +37,7 @@
             >
             </GalleryPopup>
         </v-dialog>
-    </v-container>
+    </v-responsive>
 </template>
 
 <script>

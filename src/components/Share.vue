@@ -1,11 +1,11 @@
 <template>
-    <v-container id="share" class="custom-content-container">
+    <v-responsive id="share" class="custom-content-container">
 <!--        <v-img src="images/share.png"></v-img>-->
         <div class="divider-bar"></div>
         <div class="title-container text-type-olive text-type-24">
             공유하기
         </div>
-        <v-responsive class="d-flex button-container">
+        <v-responsive class="d-flex button-container mb-6">
             <v-row class="" justify="space-between" cols="12">
                 <v-col class="col-5">
                     <v-btn class="elevation-0 custom-button" block color="primary" @click="sendKakaoMessage" >
@@ -43,7 +43,7 @@
                 </v-btn>
             </template>
         </v-snackbar>
-    </v-container>
+    </v-responsive>
 </template>
 
 <script>

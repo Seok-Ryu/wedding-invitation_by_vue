@@ -1,8 +1,8 @@
 <template>
-    <v-container id="comment" class="custom-content-container">
+    <v-responsive id="comment" class="custom-content-container">
         <div id="lv-container" data-id="city" data-uid="MTAyMC81MzYyMy8zMDA5Ng==">
         </div>
-    </v-container>
+    </v-responsive>
 </template>
 
 <script>

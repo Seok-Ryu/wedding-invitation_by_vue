@@ -1,13 +1,13 @@
 <template>
-    <v-container id="location_map" class="custom-content-container">
-        <div class="divider-bar"></div>
-        <div class="text-container-1 text-type-black text-type-12 text-align-left">
-            날씨도, 식순도, 신랑의 애드리브도 예측할 수 없는 -
+    <v-responsive id="location_map" class="custom-content-container">
+        <div class="divider-bar mt-12"></div>
+        <div class="text-container-1 text-type-black text-type-16 text-align-left">
+            날씨도, 식순도 예측할 수 없는 -
         </div>
-        <div class="text-type-olive text-type-16">
+        <div class="text-type-olive text-type-20">
             21년 9월 11일 오후 3시 30분
         </div>
-        <div class="text-type-olive text-type-16">
+        <div class="text-type-olive text-type-20">
             용산가족공원 버드나무 아래
         </div>
         <div class="map-container" ref="mapContainer">
@@ -45,7 +45,7 @@
                 </v-col>
             </v-row>
         </v-responsive>
-    </v-container>
+    </v-responsive>
 </template>
 
 <script>
@@ -130,16 +130,14 @@
         margin-bottom: 8px;
     }
 
+    .button-container {
+        margin-bottom: 24px;
+    }
+
     .map-container {
         margin-top: 32px;
         margin-bottom: 16px;
-    }
 
-    .button-container {
-        /*margin-bottom: 24px;*/
-    }
-
-    .map-container {
         min-height: 199px;
         min-width: 311px;
         /*max-height: 900px;*/

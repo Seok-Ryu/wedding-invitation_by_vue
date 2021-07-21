@@ -1,5 +1,5 @@
 <template>
-    <v-container id="notice" class="custom-content-container">
+    <v-responsive id="notice" class="custom-content-container">
 <!--        <v-img src="images/notice.png"></v-img>-->
         <div class="divider-bar"></div>
         <div class="title-container text-type-olive text-type-24">
@@ -130,7 +130,7 @@
                 </template>
             </v-snackbar>
         </div>
-    </v-container>
+    </v-responsive>
 </template>
 
 <script>
@@ -190,7 +190,7 @@
 
     .location-info {
         margin-top: 24px;
-        margin-bottom: 40px;
+        margin-bottom: 24px;
         border: 1.5px solid var(--v-primary-base);
         padding: 16px;
     }

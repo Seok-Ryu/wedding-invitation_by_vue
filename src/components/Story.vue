@@ -1,5 +1,5 @@
 <template>
-    <v-container id="story" class="custom-content-container">
+    <v-responsive id="story" class="custom-content-container">
 <!--        <v-img src="images/story.png"></v-img>-->
         <div class="divider-bar"></div>
         <div class="title-container text-type-olive text-type-24">
@@ -31,7 +31,7 @@
                 <span class="text-type-olive">달리아는 그 꿈이 더 나은 세상을 만드는 답이라고 생각했습니다.</span>
             </div>
         </div>
-        <div class="mt-8 mb-14">
+        <div class="mt-8 mb-6">
             <v-btn class="elevation-0 custom-button" block color="primary" @click="isOpenSnackbar = true">
                 더 많은 이야기 보기
             </v-btn>
@@ -54,7 +54,7 @@
                 </v-btn>
             </template>
         </v-snackbar>
-    </v-container>
+    </v-responsive>
 </template>
 
 <script>

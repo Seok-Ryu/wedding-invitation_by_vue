@@ -51,7 +51,7 @@
     }
 
     .divider-bar {
-        margin-top: 48px;
+        margin-top: 24px;
         width: 24px;
         border-bottom: 3px solid var(--v-primary-base);
     }
@@ -68,28 +68,40 @@
         color: var(--v-secondary-base);
     }
 
+    .text-type-28 {
+        font-size: 28px;
+        font-weight: 400;
+        line-height: 56px;
+    }
+
     .text-type-24 {
         font-size: 24px;
         font-weight: 400;
-        line-height: 35px;
+        line-height: 48px;
+    }
+
+    .text-type-20 {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 40px;
     }
 
     .text-type-16 {
         font-size: 16px;
         font-weight: 300;
-        line-height: 24px;
+        line-height: 32px;
     }
 
     .text-type-16-500 {
         font-size: 16px;
         font-weight: 500;
-        line-height: 24px;
+        line-height: 32px;
     }
 
     .text-type-12 {
         font-size: 12px;
         font-weight: 300;
-        line-height: 17px;
+        line-height: 24px;
     }
 
     .text-align-center {

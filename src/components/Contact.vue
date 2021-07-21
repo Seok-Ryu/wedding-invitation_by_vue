@@ -1,5 +1,5 @@
 <template>
-    <v-container id="contact" class="custom-content-container">
+    <v-responsive id="contact" class="custom-content-container">
 <!--        <v-img src="images/contact_info.png"></v-img>-->
         <div class="groom-container">
             <div class="d-flex icon-container text-type-olive text-type-16">
@@ -58,7 +58,7 @@
                             class="pr-2"
                             text
                             color="secondary"
-                            v-on:click="linkTo('CALL', 'tel:01029504069')"
+                            v-on:click="linkTo($options.LINK_TYPE.CALL, 'tel:01029504069')"
                     >
                         010-2950-4069
                     </v-btn>
@@ -69,7 +69,7 @@
                             class="pr-2"
                             text
                             color="secondary"
-                            v-on:click="linkTo('CALL', 'tel:01024844069')"
+                            v-on:click="linkTo($options.LINK_TYPE.CALL, 'tel:01024844069')"
                     >
                         010-2484-4069
                     </v-btn>
@@ -112,7 +112,7 @@
                             text
                             small
                             color="primary"
-                            v-on:click="linkTo('CALL', 'tel:01043001867')"
+                            v-on:click="linkTo($options.LINK_TYPE.CALL, 'tel:01043001867')"
                     >
                         <v-icon size="18">
                             mdi-phone-in-talk-outline
@@ -123,7 +123,7 @@
                             color="primary"
                             text
                             small
-                            v-on:click="linkTo('KAKAO_TALK', 'http://qr.kakao.com/talk/UVtGcjnLd4AatuFKwq6z0iPx0D4-')"
+                            v-on:click="linkTo($options.LINK_TYPE.KAKAO_TALK, 'http://qr.kakao.com/talk/UVtGcjnLd4AatuFKwq6z0iPx0D4-')"
                     >
                         <v-icon size="18">
                             mdi-message-outline
@@ -145,7 +145,7 @@
                             color="primary"
                             text
                             small
-                            v-on:click="linkTo('TOSS', 'https://toss.im/_m/dK3amnzi')"
+                            v-on:click="linkTo($options.LINK_TYPE.TOSS, 'https://toss.im/_m/dK3amnzi')"
                     >
                         TOSS
                     </v-btn>
@@ -158,7 +158,7 @@
                             class="pr-2"
                             text
                             color="secondary"
-                            v-on:click="linkTo('CALL', 'tel:01028750246')"
+                            v-on:click="linkTo($options.LINK_TYPE.CALL, 'tel:01028750246')"
                     >
                         010-2875-0246
                     </v-btn>
@@ -169,7 +169,7 @@
                             class="pr-2"
                             text
                             color="secondary"
-                            v-on:click="linkTo('CALL', 'tel:01043230246')"
+                            v-on:click="linkTo($options.LINK_TYPE.CALL, 'tel:01043230246')"
                     >
                         010-4323-0246
                     </v-btn>
@@ -188,7 +188,7 @@
                 </div>
             </div>
         </div>
-    </v-container>
+    </v-responsive>
 </template>
 
 <script>
@@ -263,12 +263,12 @@
     }
 
     .groom-container {
-        margin-top: 48px;
+        margin-top: 24px;
     }
 
     .bride-container {
         margin-top: 48px;
-        margin-bottom: 42px;
+        margin-bottom: 24px;
     }
 
     .icon-container {
