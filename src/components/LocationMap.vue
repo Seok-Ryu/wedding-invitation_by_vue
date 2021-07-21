@@ -1,6 +1,6 @@
 <template>
     <v-responsive id="location_map" class="custom-content-container">
-        <div class="divider-bar mt-12"></div>
+        <div class="divider-bar"></div>
         <div class="text-container-1 text-type-black text-type-16 text-align-left">
             날씨도, 식순도 예측할 수 없는 -
         </div>
@@ -14,37 +14,48 @@
         </div>
         <v-responsive class="d-flex button-container">
             <v-row class="" justify="space-between" cols="12">
-                <v-col class="col-5">
-                    <v-btn class="elevation-0 custom-button" block @click="isOpenSnackbar = true" color="primary"
+                <v-col class="col-6">
+                    <v-btn
+                            class="elevation-0 custom-button"
+                            block
+                            :large="true"
+                            @click="isOpenSnackbar = true"
+                            color="primary"
                     >
                         캘린더 등록
                     </v-btn>
                 </v-col>
-                <v-snackbar
-                        :top="true"
-                        v-model="isOpenSnackbar"
-                        :timeout="1500"
-                        color="warning"
-                >
-                    아직 미구현 ㅠ
-                    <template v-slot:action="{ attrs }">
-                        <v-btn
-                                color="white"
-                                text
-                                v-bind="attrs"
-                                @click="isOpenSnackbar = false"
-                        >
-                            Close
-                        </v-btn>
-                    </template>
-                </v-snackbar>
-                <v-col class="col-5">
-                    <v-btn class="elevation-0 custom-button" block color="primary" href='http://kko.to/uepuFiT4o' target="_blank">
+                <v-col class="col-6">
+                    <v-btn
+                            class="elevation-0 custom-button"
+                            block color="primary"
+                            :large="true"
+                            href='http://kko.to/uepuFiT4o'
+                            target="_blank"
+                    >
                         카카오맵 보기
                     </v-btn>
                 </v-col>
             </v-row>
         </v-responsive>
+        <v-snackbar
+                :top="true"
+                v-model="isOpenSnackbar"
+                :timeout="1500"
+                color="warning"
+        >
+            아직 미구현 ㅠ
+            <template v-slot:action="{ attrs }">
+                <v-btn
+                        color="white"
+                        text
+                        v-bind="attrs"
+                        @click="isOpenSnackbar = false"
+                >
+                    Close
+                </v-btn>
+            </template>
+        </v-snackbar>
     </v-responsive>
 </template>
 
@@ -131,7 +142,7 @@
     }
 
     .button-container {
-        margin-bottom: 24px;
+        /*margin-bottom: 24px;*/
     }
 
     .map-container {

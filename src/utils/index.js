@@ -5,6 +5,8 @@ export const isMobile = () => {
 export const isDarkTheme = () => {
     const date = new Date();
 
+    date.setHours(10);
+
     if (date.getHours() > 18 || date.getHours() < 5) {
         return true;
     }

@@ -190,7 +190,6 @@
 
     .location-info {
         margin-top: 24px;
-        margin-bottom: 24px;
         border: 1.5px solid var(--v-primary-base);
         padding: 16px;
     }

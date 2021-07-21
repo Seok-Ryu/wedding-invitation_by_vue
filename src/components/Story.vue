@@ -31,8 +31,14 @@
                 <span class="text-type-olive">달리아는 그 꿈이 더 나은 세상을 만드는 답이라고 생각했습니다.</span>
             </div>
         </div>
-        <div class="mt-8 mb-6">
-            <v-btn class="elevation-0 custom-button" block color="primary" @click="isOpenSnackbar = true">
+        <div class="mt-8">
+            <v-btn
+                    class="elevation-0 custom-button"
+                    block
+                    :large="true"
+                    color="primary"
+                    @click="isOpenSnackbar = true"
+            >
                 더 많은 이야기 보기
             </v-btn>
         </div>

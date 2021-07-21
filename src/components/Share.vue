@@ -5,18 +5,28 @@
         <div class="title-container text-type-olive text-type-24">
             공유하기
         </div>
-        <v-responsive class="d-flex button-container mb-6">
+        <v-responsive class="d-flex button-container">
             <v-row class="" justify="space-between" cols="12">
-                <v-col class="col-5">
-                    <v-btn class="elevation-0 custom-button" block color="primary" @click="sendKakaoMessage" >
+                <v-col class="col-6">
+                    <v-btn
+                            class="elevation-0 custom-button"
+                            block
+                            :large="true"
+                            color="primary"
+                            @click="sendKakaoMessage" >
                         <v-icon left>
                             mdi-message-outline
                         </v-icon>
                         카카오톡
                     </v-btn>
                 </v-col>
-                <v-col class="col-5">
-                    <v-btn class="elevation-0 custom-button" block color="primary" v-on:click="copyURL">
+                <v-col class="col-6">
+                    <v-btn
+                            class="elevation-0 custom-button"
+                            block
+                            :large="true"
+                            color="primary"
+                            v-on:click="copyURL">
                         <v-icon left>
                             mdi-content-copy
                         </v-icon>

@@ -31,6 +31,7 @@
 <style scoped lang="scss">
     .custom-content-container {
         padding: 0 !important;
+        margin: 0 !important;
     }
 
     .description-container {

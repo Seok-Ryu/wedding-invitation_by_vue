@@ -54,25 +54,19 @@
             <div class="text-type-black text-type-16">
                 <div class="pt-5">
                     <span class="pr-4">류근복</span>
-                    <v-btn
-                            class="pr-2"
-                            text
-                            color="secondary"
-                            v-on:click="linkTo($options.LINK_TYPE.CALL, 'tel:01029504069')"
+                    <span style="cursor: pointer;" class="font-weight-bold"
+                          v-on:click="linkTo($options.LINK_TYPE.CALL, 'tel:01029504069')"
                     >
                         010-2950-4069
-                    </v-btn>
+                    </span>
                 </div>
                 <div class="">
                     <span class="pr-4">김미자</span>
-                    <v-btn
-                            class="pr-2"
-                            text
-                            color="secondary"
-                            v-on:click="linkTo($options.LINK_TYPE.CALL, 'tel:01024844069')"
+                    <span style="cursor: pointer;" class="font-weight-bold"
+                          v-on:click="linkTo($options.LINK_TYPE.CALL, 'tel:01024844069')"
                     >
                         010-2484-4069
-                    </v-btn>
+                    </span>
                 </div>
                 <div class="">
                     <span class="text-decoration-underline" style="cursor: pointer;"  v-on:click="copyAccountInfo">
@@ -154,25 +148,19 @@
             <div class="text-type-black text-type-16">
                 <div class="pt-5">
                     <span class="pr-4">오문경</span>
-                    <v-btn
-                            class="pr-2"
-                            text
-                            color="secondary"
-                            v-on:click="linkTo($options.LINK_TYPE.CALL, 'tel:01028750246')"
+                    <span style="cursor: pointer;" class="font-weight-bold"
+                          v-on:click="linkTo($options.LINK_TYPE.CALL, 'tel:01028750246')"
                     >
                         010-2875-0246
-                    </v-btn>
+                    </span>
                 </div>
-                <div class="">
+                <div class="name-container">
                     <span class="pr-4">윤선희</span>
-                    <v-btn
-                            class="pr-2"
-                            text
-                            color="secondary"
+                    <span style="cursor: pointer;" class="font-weight-bold"
                             v-on:click="linkTo($options.LINK_TYPE.CALL, 'tel:01043230246')"
                     >
                         010-4323-0246
-                    </v-btn>
+                    </span>
                 </div>
                 <div class="">
                     <span class="text-decoration-underline" style="cursor: pointer;"  v-on:click="copyAccountInfo">
@@ -259,16 +247,28 @@
 </script>
 
 <style scoped lang="scss">
+    .custom-text-button {
+        /*font-size: 16px*/
+        /*font-weight: 300;*/
+    }
     .custom-content-container {
+        /*margin-top: 48px;*/
+        /*margin-bottom: 48px;*/
     }
 
     .groom-container {
-        margin-top: 24px;
+        /*margin-top: 24px;*/
     }
 
     .bride-container {
         margin-top: 48px;
-        margin-bottom: 24px;
+        /*margin-bottom: 24px;*/
+    }
+
+    .name-container {
+        span {
+            height: 36px;
+        }
     }
 
     .icon-container {

@@ -1,5 +1,5 @@
 <template>
-    <v-main id="index" max-width="720">
+    <v-main id="index" max-width="720" class="ma-0 ma-auto" >
         <Intro></Intro>
         <LocationMap></LocationMap>
         <Notice></Notice>
@@ -46,12 +46,11 @@
     .custom-content-container {
         max-width: 720px;
         background: var(--v-accent-base);
-        padding-left: 32px;
-        padding-right: 32px;
+        padding: 48px 32px;
     }
 
     .divider-bar {
-        margin-top: 24px;
+        /*margin-top: 48px;*/
         width: 24px;
         border-bottom: 3px solid var(--v-primary-base);
     }

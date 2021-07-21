@@ -1,5 +1,5 @@
 <template>
-    <v-responsive id="gallery" class="custom-content-container pl-8 pr-8 pt-6 pb-6">
+    <v-responsive id="gallery" class="custom-content-container ">
         <v-row>
             <v-col
                     v-for="(item, index) in items"
