@@ -54,7 +54,7 @@
             'reminders': {
                 'useDefault': false,
                 'overrides': [
-                    {'method': 'popup', 'hours': 1}
+                    {'method': 'popup', 'minutes': 60}
                 ]
             }
         };
