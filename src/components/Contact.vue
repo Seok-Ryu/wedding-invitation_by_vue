@@ -11,7 +11,7 @@
                             text
                             color="primary"
                             small
-                            href='tel:01097371233'
+                            v-on:click="linkTo($options.LINK_TYPE.CALL, 'tel:01097371233')"
                     >
                         <v-icon
                                 size="18"
@@ -23,8 +23,7 @@
                             color="primary"
                             text
                             small
-                            href='http://qr.kakao.com/talk/geQ_Uj1WiGWinLXTpeX8CjC9lTY-'
-                            target="_blank"
+                            v-on:click="linkTo($options.LINK_TYPE.KAKAO_TALK, 'http://qr.kakao.com/talk/geQ_Uj1WiGWinLXTpeX8CjC9lTY-')"
                     >
                         <v-icon
                                 size="18"
@@ -46,8 +45,7 @@
                             color="primary"
                             text
                             small
-                            href='https://toss.im/_m/TWcYNcA3'
-                            target="_blank"
+                            v-on:click="linkTo($options.LINK_TYPE.TOSS, 'https://toss.im/_m/vXxikPiB')"
                     >
                         TOSS
                     </v-btn>
@@ -60,7 +58,7 @@
                             class="pr-2"
                             text
                             color="secondary"
-                            href='tel:01029504069'
+                            v-on:click="linkTo('CALL', 'tel:01029504069')"
                     >
                         010-2950-4069
                     </v-btn>
@@ -71,7 +69,7 @@
                             class="pr-2"
                             text
                             color="secondary"
-                            href='tel:01024844069'
+                            v-on:click="linkTo('CALL', 'tel:01024844069')"
                     >
                         010-2484-4069
                     </v-btn>
@@ -85,11 +83,12 @@
             </div>
         </div>
         <v-snackbar
+                :top="true"
                 v-model="isOpenSnackbar"
-                color="primary"
-                :timeout="2000"
+                :color="snackbarColor"
+                :timeout="1500"
         >
-            계좌 번호가 복사 되었습니다 :)
+            {{snackbarText}}
             <template v-slot:action="{ attrs }">
                 <v-btn
                         color="white"
@@ -113,7 +112,7 @@
                             text
                             small
                             color="primary"
-                            href='tel:01043001867'
+                            v-on:click="linkTo('CALL', 'tel:01043001867')"
                     >
                         <v-icon size="18">
                             mdi-phone-in-talk-outline
@@ -124,8 +123,7 @@
                             color="primary"
                             text
                             small
-                            href='http://qr.kakao.com/talk/UVtGcjnLd4AatuFKwq6z0iPx0D4-'
-                            target="_blank"
+                            v-on:click="linkTo('KAKAO_TALK', 'http://qr.kakao.com/talk/UVtGcjnLd4AatuFKwq6z0iPx0D4-')"
                     >
                         <v-icon size="18">
                             mdi-message-outline
@@ -147,8 +145,7 @@
                             color="primary"
                             text
                             small
-                            href='https://toss.im/_m/VmrctDP4'
-                            target="_blank"
+                            v-on:click="linkTo('TOSS', 'https://toss.im/_m/dK3amnzi')"
                     >
                         TOSS
                     </v-btn>
@@ -161,7 +158,7 @@
                             class="pr-2"
                             text
                             color="secondary"
-                            href='tel:01028750246'
+                            v-on:click="linkTo('CALL', 'tel:01028750246')"
                     >
                         010-2875-0246
                     </v-btn>
@@ -172,7 +169,7 @@
                             class="pr-2"
                             text
                             color="secondary"
-                            href='tel:01043230246'
+                            v-on:click="linkTo('CALL', 'tel:01043230246')"
                     >
                         010-4323-0246
                     </v-btn>
@@ -195,15 +192,30 @@
 </template>
 
 <script>
+    import { isMobile } from '@/utils';
+
+    const LINK_TYPE = {
+        CALL: 'CALL',
+        KAKAO_TALK: 'KAKAO_TALK',
+        TOSS: 'TOSS',
+    }
+
     export default {
+        LINK_TYPE,
         name: "Contact",
         data: () => ({
             isOpenSnackbar: false,
+            snackbarText: '',
+            snackbarColor: 'primary',
         }),
         methods: {
             copyAccountInfo(event) {
                 if (!document.queryCommandSupported("copy")) {
-                    return console.log('복사하기가 지원되지 않는 브라우저');
+                    this.snackbarText = '복사하기가 지원되지 않는 브라우저에요 :(';
+                    this.snackbarColor = 'warning'
+                    this.isOpenSnackbar = true;
+
+                    return;
                 }
 
                 const inputElement = document.createElement("input");
@@ -214,7 +226,33 @@
                 inputElement.select();
                 document.execCommand("copy");
                 document.body.removeChild(inputElement);
-                this.isOpenSnackbar = true
+
+                this.snackbarText = '계좌 번호가 복사 되었습니다 :)';
+                this.snackbarColor = 'primary'
+                this.isOpenSnackbar = true;
+            },
+            linkTo(type, target) {
+                if (!isMobile()) {
+                    this.snackbarText = '모바일에서만 지원됩니다 :(';
+                    this.snackbarColor = 'warning'
+                    this.isOpenSnackbar = true;
+
+                    return;
+                }
+
+                switch (type) {
+                    case LINK_TYPE.CALL:
+                        break;
+                    case LINK_TYPE.KAKAO_TALK:
+                        break;
+                    case LINK_TYPE.TOSS:
+                        break;
+                }
+                // const route = this.$router.resolve({path: target});
+                // let route = this.$router.resolve('/link/to/page'); // This also works.
+                // window.open(route.href, '_blank');
+                window.open(target, '_blank');
+
             }
         }
     }

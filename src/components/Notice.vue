@@ -89,7 +89,7 @@
                     피로연장 ‘기와'
                 </div>
                 <v-btn
-                        color="#A7BB64"
+                        color="var(--v-primary-base)"
                         text
                         href='http://kko.to/Ic3IlH0fp' target="_blank"
                 >
@@ -112,11 +112,12 @@
                 </div>
             </div>
             <v-snackbar
+                    :top="true"
                     v-model="isOpenSnackbar"
-                    color="primary"
-                    :timeout="2000"
+                    :color="snackbarColor"
+                    :timeout="1500"
             >
-                주소가 복사 되었습니다 :)
+                {{snackbarText}}
                 <template v-slot:action="{ attrs }">
                     <v-btn
                             color="white"
@@ -142,17 +143,18 @@
         },
         data: () => ({
             isOpenSnackbar: false,
+            snackbarText: '',
+            snackbarColor: 'primary',
         }),
         methods: {
             copyAddress(event) {
                 if (!document.queryCommandSupported("copy")) {
-                    return console.log('복사하기가 지원되지 않는 브라우저');
+                    this.snackbarText = '복사하기가 지원되지 않는 브라우저에요 :(';
+                    this.snackbarColor = 'warning'
+                    this.isOpenSnackbar = true;
+
+                    return;
                 }
-                // console.log(event.target.innerText)
-                // console.log(event)
-                // const element = document.getElementById('restaurant');
-                // console.log(element)
-                // element.select()
 
                 const inputElement = document.createElement("input");
                 inputElement.value = event.target.innerText;
@@ -162,30 +164,10 @@
                 inputElement.select();
                 document.execCommand("copy");
                 document.body.removeChild(inputElement);
-                this.isOpenSnackbar = true
 
-                // event.target.select();
-
-                // alert(.)
-
-                /*const textarea = document.createElement("textarea");
-                // textarea.value = text;
-                textarea.style.top = 0;
-                textarea.style.left = 0;
-                textarea.style.display = "fixed";
-
-                // 흐름 3.
-                document.body.appendChild(textarea);
-                // focus() -> 사파리 브라우저 서포팅
-                textarea.focus();
-                // select() -> 사용자가 입력한 내용을 영역을 설정할 때 필요
-                event.target.select();
-                // 흐름 4.
-                document.execCommand("copy");
-                // 흐름 5.
-                document.body.removeChild(textarea);*/
-                // alert("클립보드에 복사되었습니다.");
-
+                this.snackbarText = '주소가 복사 되었습니다 :)';
+                this.snackbarColor = 'primary'
+                this.isOpenSnackbar = true;
             }
         }
     }
@@ -209,7 +191,7 @@
     .location-info {
         margin-top: 24px;
         margin-bottom: 40px;
-        border: 1.5px solid #A7BB64;
+        border: 1.5px solid var(--v-primary-base);
         padding: 16px;
     }
 

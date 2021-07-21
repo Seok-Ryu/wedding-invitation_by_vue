@@ -8,14 +8,22 @@
                 석류 + 다영
             </div>
         </v-responsive>
-        <v-img src="images/IMG_7650.png"></v-img>
+        <v-img :src="getImageSrc()"></v-img>
     </v-container>
 </template>
 
 <script>
+    import { isDarkTheme } from '@/utils';
+
     export default {
         name: "Intro",
         methods: {
+            getImageSrc() {
+                const lightImage = 'images/IMG_7650.png';
+                const darkImage = 'images/IMG_7853.jpg';
+
+                return isDarkTheme() ? darkImage: lightImage;
+            }
         }
     }
 </script>

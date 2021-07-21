@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <link rel="icon" href="<%= BASE_URL %>pomegranate-icon.png">
     <title><%= htmlWebpackPlugin.options.title %></title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700&display=swap&subset=korean">
@@ -27,10 +27,8 @@
       // document.getElementsByTagName("script")[0].parentNode.appendChild(script);
 
     </script>-->
-    <script type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=194d203f9fed44b8d0edf6c4158b8863&libraries=services"></script>
-    <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <script type="text/javascript">
+
+    <!--<script type="text/javascript">
       (function(_document, type) {
         var j, e = _document.getElementsByTagName(type)[0];
 
@@ -42,7 +40,7 @@
 
         e.parentNode.insertBefore(j, e);
       })(document, 'script');
-    </script>
+    </script>-->
     <script src="https://apis.google.com/js/api.js">
     </script>
   </head>
@@ -51,5 +49,8 @@
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
+    <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=194d203f9fed44b8d0edf6c4158b8863&libraries=services"></script>
+    <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
   </body>
 </html>

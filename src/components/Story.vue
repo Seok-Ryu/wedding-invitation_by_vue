@@ -32,13 +32,14 @@
             </div>
         </div>
         <div class="mt-8 mb-14">
-            <v-btn class="elevation-0 custom-button" block @click="isOpenSnackbar = true">
+            <v-btn class="elevation-0 custom-button" block color="primary" @click="isOpenSnackbar = true">
                 더 많은 이야기 보기
             </v-btn>
         </div>
         <v-snackbar
+                :top="true"
                 v-model="isOpenSnackbar"
-                :timeout="2000"
+                :timeout="1500"
                 color="warning"
         >
             아직 미구현 ㅠ
