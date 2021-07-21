@@ -36,15 +36,15 @@
 
     const addNewEvent = () => {
         var event = {
-            'summary': 'test sryu',
-            'location': '800 Howard St., San Francisco, CA 94103',
-            'description': 'A chance to hear more about Google\'s developer products.',
+            'summary': '류석 + 오다영 결혼식',
+            'location': '용산가족공원, 대한민국 서울특별시 용산구 용산동6가 서빙고로 185',
+            'description': '옷차림은 편하게, 마음은 가볍게, 10분일찍 오시면 좋아요',
             'start': {
-                'dateTime': '2021-07-22T09:30:00+09:00',
+                'dateTime': '2021-09-11T15:30:00+09:00',
                 'timeZone': 'Asia/Seoul'
             },
             'end': {
-                'dateTime': '2021-07-22T18:30:00+09:00',
+                'dateTime': '2021-07-22T17:00:00+09:00',
                 'timeZone': 'Asia/Seoul'
             },
             'attendees': [
@@ -54,7 +54,7 @@
             'reminders': {
                 'useDefault': false,
                 'overrides': [
-                    {'method': 'popup', 'minutes': 10}
+                    {'method': 'popup', 'hours': 1}
                 ]
             }
         };
