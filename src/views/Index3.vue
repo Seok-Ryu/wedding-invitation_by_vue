@@ -1,14 +1,10 @@
 <template>
     <v-main id="index" max-width="720">
-        <Intro></Intro>
         <LocationMap></LocationMap>
         <Notice></Notice>
-        <Contact></Contact>
-        <Story></Story>
         <Gallery></Gallery>
         <Share></Share>
         <Comments></Comments>
-<!--        <LinkInfos></LinkInfos>-->
     </v-main>
 </template>
 
@@ -16,10 +12,7 @@
     // import LinkInfos from '../components/LinkInfos';
     import Comments from "@/components/Comments";
     import LocationMap from "@/components/LocationMap";
-    import Intro from "@/components/Intro";
     import Notice from "@/components/Notice";
-    import Contact from "@/components/Contact";
-    import Story from "@/components/Story";
     import Share from "@/components/Share";
     import Gallery from "@/components/Gallery";
 
@@ -28,10 +21,7 @@
         components: {
             Gallery,
             Share,
-            Story,
-            Contact,
             Notice,
-            Intro,
             // LinkInfos,
             LocationMap,
             Comments
@@ -43,12 +33,12 @@
 </style>
 
 <style lang="scss">
-    .custom-content-container {
+    /*.custom-content-container {
         max-width: 720px;
-        background: var(--v-accent-base);
+        background: var(--v-secondary-base);
         padding-left: 32px;
         padding-right: 32px;
-    }
+    }*/
 
     .divider-bar {
         margin-top: 48px;
