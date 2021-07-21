@@ -52,7 +52,7 @@
                 {'email': 'sbrin@example.com'}
             ],
             'reminders': {
-                'useDefault': true,
+                'useDefault': false,
                 'overrides': [
                     {'method': 'popup', 'minutes': 10}
                 ]
