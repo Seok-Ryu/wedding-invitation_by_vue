@@ -20,7 +20,7 @@
                             block
                             :large="true"
                             color="primary"
-                            v-if="isInitializeGoogle"
+                            v-bind="isInitializeGoogle"
                             v-on:click="addNewEvent"
                     >
                         캘린더 등록
@@ -40,7 +40,7 @@
                             class="elevation-0 custom-button"
                             block color="primary"
                             :large="true"
-                            v-if="isInitializeGoogle"
+                            v-bind="isInitializeGoogle"
                             v-on:click="handleSignoutClick"
                     >
                         임시로그아웃
