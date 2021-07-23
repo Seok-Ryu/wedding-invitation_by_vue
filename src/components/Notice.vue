@@ -26,7 +26,7 @@
             </div>
             <div>
                 <span class="text-type-olive">2 /  </span>
-                <span>이촌역 2번 출구에서 셔틀버스를 타거나 10분 정도 걸어오세요.</span>
+                <span>산책로를 따라 7분정도 걸어오세요.</span>
             </div>
             <div>
                 <span class="text-type-olive">3 /  </span>
