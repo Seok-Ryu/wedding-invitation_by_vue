@@ -186,7 +186,6 @@
                 return marker;
             },
             initGoogleCalendarAPI() {
-                console.log('isInitializeGoogle', this.isInitializeGoogle);
                 const CLIENT_ID = '215390870050-722lfan2ekh51le7rsch65dnum8onjm8.apps.googleusercontent.com';
                 const API_KEY = 'AIzaSyDyYUTFYEpqD4c6Okb-qDE42shcSup0POQ';
 
@@ -203,23 +202,22 @@
                     discoveryDocs: DISCOVERY_DOCS,
                     scope: SCOPES
                 }).then(() => {
-                    console.info('when Init', this.isAuthSignedIn);
                     this.isInitializeGoogle = true;
+
+                    console.info('when Init', this.isAuthSignedIn);
                     // eslint-disable-next-line no-undef
                     gapi.auth2.getAuthInstance().isSignedIn.listen(this.setAuthSignedIn);
 
                     // eslint-disable-next-line no-undef
                     this.setAuthSignedIn(gapi.auth2.getAuthInstance().isSignedIn.get());
                     console.info('when success Init', this.isAuthSignedIn);
-                    console.info('google api init', this.isInitializeGoogle);
                 }, (error) => {
-                    console.info('google api fail', this.isInitializeGoogle);
+                    this.isInitializeGoogle = false;
+
                     console.info('when fail Init', this.isAuthSignedIn);
                     console.error(JSON.stringify(error, null, 2));
-                    this.isInitializeGoogle = false;
-                });
 
-                console.log('isInitializeGoogle', this.isInitializeGoogle);
+                });
             },
             isSignined() {
                 // return false;
@@ -233,7 +231,7 @@
                 console.log('send event', this.isAuthSignedIn)
                 if(this.isSignined()) {
                     console.log('isSignined, ', this.isAuthSignedIn)
-                    /*const event = {
+                    const event = {
                         summary: '류석 + 오다영 결혼식',
                         location: '용산가족공원, 대한민국 서울특별시 용산구 용산동6가 서빙고로 185',
                         description: '옷차림은 편하게, 마음은 가볍게, 10분일찍 오시면 좋아요',
@@ -259,7 +257,7 @@
                         resource: event
                     });
 
-                    request.execute(this.eventCallback)*/
+                    request.execute(this.eventCallback)
                 } else {
                     console.log('not isSignined, ', this.isAuthSignedIn)
                     this.authSignin();
