@@ -262,6 +262,7 @@
                     request.execute(this.eventCallback)*/
                 } else {
                     console.log('not isSignined, ', this.isAuthSignedIn)
+                    this.authSignin();
                     // this.isOpenDialog = true;
                     // gapi.auth2.getAuthInstance().signIn();
                 }
