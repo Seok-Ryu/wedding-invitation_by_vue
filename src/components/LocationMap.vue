@@ -114,10 +114,10 @@
             isOpenDialog: false,
             isInitializeGoogle: false,
         }),
-        async mounted() {
+        mounted() {
             this.createKakaoMap();
             // eslint-disable-next-line no-undef
-            await gapi.load('client:auth2', await this.initGoogleCalendarAPI);
+            gapi.load('client:auth2', this.initGoogleCalendarAPI);
         },
         methods: {
             isSignined() {
@@ -179,7 +179,7 @@
 
                 return marker;
             },
-            async initGoogleCalendarAPI() {
+            initGoogleCalendarAPI() {
                 const CLIENT_ID = '215390870050-722lfan2ekh51le7rsch65dnum8onjm8.apps.googleusercontent.com';
                 const API_KEY = 'AIzaSyDyYUTFYEpqD4c6Okb-qDE42shcSup0POQ';
 
@@ -190,30 +190,24 @@
                 // included, separated by spaces.
                 const SCOPES = "https://www.googleapis.com/auth/calendar";
 
-                await new Promise((resolve, reject) => {
+                // eslint-disable-next-line no-undef
+                gapi.client.init({
+                    apiKey: API_KEY,
+                    clientId: CLIENT_ID,
+                    discoveryDocs: DISCOVERY_DOCS,
+                    scope: SCOPES
+                }, () => {
+                    // Listen for sign-in state changes.
                     // eslint-disable-next-line no-undef
-                    gapi.client.init({
-                        apiKey: API_KEY,
-                        clientId: CLIENT_ID,
-                        discoveryDocs: DISCOVERY_DOCS,
-                        scope: SCOPES
-                    }, () => {
-                        // Listen for sign-in state changes.
-                        // eslint-disable-next-line no-undef
-                        // gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+                    // gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 
-                        // Handle the initial sign-in state.
-                        // eslint-disable-next-line no-undef
-                        // updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-                        console.info('google api init');
-
-                        return resolve();
-                    }, (error) => {
-                        console.info('google api fail');
-                        console.error(JSON.stringify(error, null, 2));
-
-                        return reject(error);
-                    });
+                    // Handle the initial sign-in state.
+                    // eslint-disable-next-line no-undef
+                    // updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+                    console.info('google api init');
+                }, (error) => {
+                    console.info('google api fail');
+                    console.error(JSON.stringify(error, null, 2));
                 });
 
                 console.log('isInitializeGoogle', this.isInitializeGoogle);
