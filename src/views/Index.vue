@@ -7,13 +7,11 @@
         <Story></Story>
         <Gallery></Gallery>
         <Share></Share>
-        <LinkInfos></LinkInfos>
         <Comments></Comments>
     </v-main>
 </template>
 
 <script>
-    import LinkInfos from '../components/LinkInfos';
     import Comments from "@/components/Comments";
     import LocationMap from "@/components/LocationMap";
     import Intro from "@/components/Intro";
@@ -32,7 +30,6 @@
             Contact,
             Notice,
             Intro,
-            LinkInfos,
             LocationMap,
             Comments
         }

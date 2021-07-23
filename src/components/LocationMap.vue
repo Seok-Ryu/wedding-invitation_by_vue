@@ -19,8 +19,8 @@
                             class="elevation-0 custom-button"
                             block
                             :large="true"
-                            @click="isOpenSnackbar = true"
                             color="primary"
+                            v-on:click="addNewEvent"
                     >
                         캘린더 등록
                     </v-btn>
@@ -41,10 +41,10 @@
         <v-snackbar
                 :top="true"
                 v-model="isOpenSnackbar"
+                :color="snackbarColor"
                 :timeout="1500"
-                color="warning"
         >
-            아직 미구현 ㅠ
+            {{snackbarText}}
             <template v-slot:action="{ attrs }">
                 <v-btn
                         color="white"
@@ -56,6 +56,47 @@
                 </v-btn>
             </template>
         </v-snackbar>
+        <v-dialog
+                transition="dialog-bottom-transition"
+                v-model="isOpenDialog"
+        >
+            <!--<template v-slot:activator="{ on, attrs }">
+                <v-btn
+                        color="primary"
+                        v-bind="attrs"
+                        v-on="on"
+                >From the bottom</v-btn>
+            </template>-->
+            <v-card>
+                <v-toolbar
+                        color="primary"
+                        dark
+                >알림</v-toolbar>
+                <v-card-text>
+                    <div class="text-h6 pt-4">캘린더 등록을 위해 구글 로그인과 권한승인을 해주셔야합니다!</div>
+                </v-card-text>
+                <v-card-actions class="justify-end">
+<!--                    <v-spacer></v-spacer>-->
+                    <v-btn
+                            color="blue darken-1"
+                            text
+                            @click="isOpenDialog = false"
+                    >
+                        닫기
+                    </v-btn>
+                    <v-btn
+                            color="blue darken-1"
+                            text
+                            @click="authSignin"
+                    >
+                        구글 인증
+                    </v-btn>
+                </v-card-actions>
+            </v-card>
+            <!--<template v-slot:default="isOpenDialog">
+
+            </template>-->
+        </v-dialog>
     </v-responsive>
 </template>
 
@@ -67,12 +108,23 @@
         name: "LocationMap",
         data: () => ({
             isOpenSnackbar: false,
+            snackbarColor: '',
+            snackbarText: '',
             map: undefined,
+            isOpenDialog: false,
+            isInitializeGoogle: false,
         }),
-        mounted() {
+        async mounted() {
             this.createKakaoMap();
+            // eslint-disable-next-line no-undef
+            await gapi.load('client:auth2', await this.initGoogleCalendarAPI);
         },
         methods: {
+            isSignined() {
+                // return false;
+                // eslint-disable-next-line no-undef
+                return gapi.auth2.getAuthInstance().isSignedIn.get();
+            },
             createKakaoMap() {
                 this.createMap(LONGITUDE, LATITUDE);
                 // eslint-disable-next-line no-undef
@@ -126,6 +178,100 @@
                 });
 
                 return marker;
+            },
+            async initGoogleCalendarAPI() {
+                const CLIENT_ID = '215390870050-722lfan2ekh51le7rsch65dnum8onjm8.apps.googleusercontent.com';
+                const API_KEY = 'AIzaSyDyYUTFYEpqD4c6Okb-qDE42shcSup0POQ';
+
+                // Array of API discovery doc URLs for APIs used by the quickstart
+                const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+
+                // Authorization scopes required by the API; multiple scopes can be
+                // included, separated by spaces.
+                const SCOPES = "https://www.googleapis.com/auth/calendar";
+
+                await new Promise((resolve, reject) => {
+                    // eslint-disable-next-line no-undef
+                    gapi.client.init({
+                        apiKey: API_KEY,
+                        clientId: CLIENT_ID,
+                        discoveryDocs: DISCOVERY_DOCS,
+                        scope: SCOPES
+                    }, () => {
+                        // Listen for sign-in state changes.
+                        // eslint-disable-next-line no-undef
+                        // gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+                        // Handle the initial sign-in state.
+                        // eslint-disable-next-line no-undef
+                        // updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+                        console.info('google api init');
+
+                        return resolve();
+                    }, (error) => {
+                        console.info('google api fail');
+                        console.error(JSON.stringify(error, null, 2));
+
+                        return reject(error);
+                    });
+                });
+
+                console.log('isInitializeGoogle', this.isInitializeGoogle);
+            },
+            addNewEvent () {
+                if(this.isSignined()) {
+                    const event = {
+                        summary: '류석 + 오다영 결혼식',
+                        location: '용산가족공원, 대한민국 서울특별시 용산구 용산동6가 서빙고로 185',
+                        description: '옷차림은 편하게, 마음은 가볍게, 10분일찍 오시면 좋아요',
+                        start: {
+                            'dateTime': '2021-09-11T15:30:00+09:00',
+                            'timeZone': 'Asia/Seoul'
+                        },
+                        end: {
+                            'dateTime': '2021-09-11T17:00:00+09:00',
+                            'timeZone': 'Asia/Seoul'
+                        },
+                        reminders: {
+                            'useDefault': false,
+                            'overrides': [
+                                {'method': 'popup', 'minutes': 60}, // 1 hour
+                                {'method': 'popup', 'minutes': 1440}, // 1 day
+                            ]
+                        }
+                    };
+                    // eslint-disable-next-line no-undef
+                    const request = gapi.client.calendar.events.insert({
+                        calendarId: 'primary',
+                        resource: event
+                    });
+
+                    request.execute(this.eventCallback)
+                } else {
+                    this.isOpenDialog = true;
+                    // gapi.auth2.getAuthInstance().signIn();
+                }
+
+            },
+            async authSignin() {
+                this.isOpenDialog = false;
+                // eslint-disable-next-line no-undef
+                await gapi.auth2.getAuthInstance().signIn();
+                if(this.isSignined()) {
+                    this.snackbarText =  '로그인 성공 :)';
+                    this.snackbarColor = 'primary';
+                } else {
+                    this.snackbarText =  '로그인 실패 :(';
+                    this.snackbarColor = 'warning';
+                }
+
+                this.isOpenSnackbar = true;
+            },
+            eventCallback(event) {
+                this.snackbarText =  '구글 캘린더에 이벤트가 등록되었어요 :)';
+                this.snackbarColor = 'primary';
+                this.isOpenDialog = true;
+                console.log(event.htmlLink);
             },
         }
     }

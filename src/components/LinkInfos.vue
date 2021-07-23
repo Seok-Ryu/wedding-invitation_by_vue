@@ -47,14 +47,11 @@
                 'dateTime': '2021-09-11T17:00:00+09:00',
                 'timeZone': 'Asia/Seoul'
             },
-            'attendees': [
-                {'email': 'lpage@example.com'},
-                {'email': 'sbrin@example.com'}
-            ],
             'reminders': {
                 'useDefault': false,
                 'overrides': [
-                    {'method': 'popup', 'minutes': 60}
+                    {'method': 'popup', 'minutes': 60}, // 1 hour
+                    {'method': 'popup', 'minutes': 1440}, // 1 day
                 ]
             }
         };
