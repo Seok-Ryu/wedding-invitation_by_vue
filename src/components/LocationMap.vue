@@ -35,6 +35,14 @@
                     >
                         카카오맵 보기
                     </v-btn>
+                    <v-btn
+                            class="elevation-0 custom-button"
+                            block color="primary"
+                            :large="true"
+                            v-on:click="handleSignoutClick"
+                    >
+                        임시로그아웃
+                    </v-btn>
                 </v-col>
             </v-row>
         </v-responsive>
@@ -73,7 +81,7 @@
                         dark
                 >알림</v-toolbar>
                 <v-card-text>
-                    <div class="text-h6 pt-4">캘린더 등록을 위해 구글 로그인과 권한승인을 해주셔야합니다!</div>
+                    <div class="subtitle-1 pt-4">캘린더 등록을 위해 구글 로그인과 권한승인을 해주셔야합니다!</div>
                 </v-card-text>
                 <v-card-actions class="justify-end">
 <!--                    <v-spacer></v-spacer>-->
@@ -205,9 +213,11 @@
                     // eslint-disable-next-line no-undef
                     // updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
                     console.info('google api init');
+                    this.isInitializeGoogle = true;
                 }, (error) => {
                     console.info('google api fail');
                     console.error(JSON.stringify(error, null, 2));
+                    this.isInitializeGoogle = false;
                 });
 
                 console.log('isInitializeGoogle', this.isInitializeGoogle);
@@ -250,7 +260,11 @@
             async authSignin() {
                 this.isOpenDialog = false;
                 // eslint-disable-next-line no-undef
+                console.log('before ', gapi.auth2.getAuthInstance().isSignedIn.get())
+                // eslint-disable-next-line no-undef
                 await gapi.auth2.getAuthInstance().signIn();
+                // eslint-disable-next-line no-undef
+                console.log('after ', gapi.auth2.getAuthInstance().isSignedIn.get())
                 if(this.isSignined()) {
                     this.snackbarText =  '로그인 성공 :)';
                     this.snackbarColor = 'primary';
@@ -267,6 +281,10 @@
                 this.isOpenDialog = true;
                 console.log(event.htmlLink);
             },
+            handleSignoutClick() {
+                // eslint-disable-next-line no-undef
+                gapi.auth2.getAuthInstance().signOut();
+            }
         }
     }
 </script>
