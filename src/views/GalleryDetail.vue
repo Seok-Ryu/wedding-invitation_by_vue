@@ -45,7 +45,6 @@
           }
         },
         mounted() {
-          console.log(this.id)
             this.model = this.id;
         },
         data: () => ({

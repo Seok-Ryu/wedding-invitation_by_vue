@@ -21,7 +21,7 @@
                             :large="true"
                             color="primary"
                             v-bind="isInitializeGoogle"
-                            v-on:click="addNewEvent"
+                            v-on:click="onClickCalendarEvent"
                     >
                         캘린더 등록
                     </v-btn>
@@ -162,19 +162,16 @@
                 }).then(() => {
                     this.isInitializeGoogle = true;
 
-                    console.info('when Init', this.isAuthSignedIn);
                     // eslint-disable-next-line no-undef
                     gapi.auth2.getAuthInstance().isSignedIn.listen(this.setAuthSignedIn);
 
                     // eslint-disable-next-line no-undef
                     this.setAuthSignedIn(gapi.auth2.getAuthInstance().isSignedIn.get());
-                    console.info('when success Init', this.isAuthSignedIn);
                 }, (error) => {
                     this.isInitializeGoogle = false;
 
-                    console.info('when fail Init', this.isAuthSignedIn);
-                    console.error(JSON.stringify(error, null, 2));
-
+                    console.error(`google api init fail.`, error);
+                    // console.error(JSON.stringify(error, null, 2));
                 });
             },
             isSignined() {
@@ -185,65 +182,72 @@
             setAuthSignedIn (isSignedIn) {
                 this.isAuthSignedIn = isSignedIn;
             },
-            addNewEvent () {
-                console.log('send event', this.isAuthSignedIn)
-                if(this.isSignined()) {
-                    console.log('isSignined, ', this.isAuthSignedIn)
-                    const event = {
-                        summary: '류석 + 오다영 결혼식',
-                        location: '용산가족공원, 대한민국 서울특별시 용산구 용산동6가 서빙고로 185',
-                        description: '옷차림은 편하게, 마음은 가볍게, 10분일찍 오시면 좋아요',
-                        start: {
-                            'dateTime': '2021-09-11T15:30:00+09:00',
-                            'timeZone': 'Asia/Seoul'
-                        },
-                        end: {
-                            'dateTime': '2021-09-11T17:00:00+09:00',
-                            'timeZone': 'Asia/Seoul'
-                        },
-                        reminders: {
-                            'useDefault': false,
-                            'overrides': [
-                                {'method': 'popup', 'minutes': 60}, // 1 hour
-                                {'method': 'popup', 'minutes': 1440}, // 1 day
-                            ]
-                        }
-                    };
-                    // eslint-disable-next-line no-undef
-                    const request = gapi.client.calendar.events.insert({
-                        calendarId: 'primary',
-                        resource: event
-                    });
-
-                    request.execute(this.eventCallback)
+            onClickCalendarEvent() {
+                if (this.isSignined()) {
+                    this.addNewEvent();
                 } else {
-                    console.log('not isSignined, ', this.isAuthSignedIn)
                     this.authSignin();
                 }
+            },
+            addNewEvent () {
+                const event = {
+                    summary: '류석 + 오다영 결혼식',
+                    location: '용산가족공원, 대한민국 서울특별시 용산구 용산동6가 서빙고로 185',
+                    description: '옷차림은 편하게, 마음은 가볍게, 10분일찍 오시면 좋아요',
+                    start: {
+                        'dateTime': '2021-09-11T15:30:00+09:00',
+                        'timeZone': 'Asia/Seoul'
+                    },
+                    end: {
+                        'dateTime': '2021-09-11T17:00:00+09:00',
+                        'timeZone': 'Asia/Seoul'
+                    },
+                    reminders: {
+                        'useDefault': false,
+                        'overrides': [
+                            {'method': 'popup', 'minutes': 60}, // 1 hour
+                            {'method': 'popup', 'minutes': 1440}, // 1 day
+                        ]
+                    }
+                };
+                // eslint-disable-next-line no-undef
+                const request = gapi.client.calendar.events.insert({
+                    calendarId: 'primary',
+                    resource: event
+                });
 
+                request.execute(this.eventCallback)
             },
             async authSignin() {
                 // eslint-disable-next-line no-undef
-                console.log('before ', gapi.auth2.getAuthInstance().isSignedIn.get())
-                // eslint-disable-next-line no-undef
                 await gapi.auth2.getAuthInstance().signIn();
-                // eslint-disable-next-line no-undef
-                console.log('after ', gapi.auth2.getAuthInstance().isSignedIn.get())
+
                 if(this.isSignined()) {
-                    this.snackbarText =  '로그인 성공 :)';
-                    this.snackbarColor = 'primary';
+                    this.addNewEvent();
                 } else {
-                    this.snackbarText =  '로그인 실패 :(';
+                    this.snackbarText =  '구글 인증에 실패 했어요 :(';
                     this.snackbarColor = 'warning';
                 }
 
                 this.isOpenSnackbar = true;
             },
             eventCallback(event) {
+                console.log('Event: ', event);
+
+                if (!event.htmlLink) {
+                    this.snackbarText =  '이벤트가 등록에 실패했어요 :)';
+                    this.snackbarColor = 'error';
+                    this.isOpenSnackbar = true;
+
+                    console.error('Event created fail: ' + event.htmlLink);
+                    return;
+                }
+
                 this.snackbarText =  '구글 캘린더에 이벤트가 등록되었어요 :)';
                 this.snackbarColor = 'primary';
                 this.isOpenSnackbar = true;
-                console.log(event.htmlLink);
+
+                console.log('Event created: ' + event.htmlLink);
             },
             handleSignoutClick() {
                 // eslint-disable-next-line no-undef

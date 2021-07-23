@@ -37,7 +37,7 @@
                         document.getElementsByTagName('head')[0].appendChild(commentScript);
                     });
                 } catch (err) {
-                    console.error(err);
+                    console.error(`comment script load error`, err);
                 }
             },
             show() {

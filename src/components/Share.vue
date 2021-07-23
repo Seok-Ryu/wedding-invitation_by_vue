@@ -78,13 +78,12 @@
                 }
 
                 // eslint-disable-next-line no-undef
-                console.log('before init', Kakao.isInitialized());
                 // eslint-disable-next-line no-undef
                 Kakao.init("194d203f9fed44b8d0edf6c4158b8863");
                 // eslint-disable-next-line no-undef
                 Kakao.isInitialized();
                 // eslint-disable-next-line no-undef
-                console.log('after init', Kakao.isInitialized());
+                console.log('KaKao init result: ', Kakao.isInitialized());
 
                 return true;
             },

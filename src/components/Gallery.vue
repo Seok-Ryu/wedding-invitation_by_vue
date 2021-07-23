@@ -70,7 +70,7 @@
         }),
         methods: {
             itemClick(index, item) {
-                console.log(index, item);
+                console.log(`select index: ${index}`, item);
                 this.dialogInfo.isVisibleDialog = true;
                 this.dialogInfo.targetItemId = index;
                 // this.$router.push({name: 'GalleryDetail', params: { id: index }});
