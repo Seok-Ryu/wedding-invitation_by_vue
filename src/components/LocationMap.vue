@@ -85,7 +85,7 @@
                 // eslint-disable-next-line no-undef
                 const bounds = new kakao.maps.LatLngBounds();
                 const markerOfWeddingLocation = this.createMarker(bounds, 37.5213786,126.9838787, 'WED');
-                const markerOfStation = this.createMarker(bounds, 37.5225786,126.9745787);
+                const markerOfStation = this.createMarker(bounds, 37.5221786,126.9758787);
 
                 markerOfWeddingLocation.setMap(this.map);
                 markerOfStation.setMap(this.map)
