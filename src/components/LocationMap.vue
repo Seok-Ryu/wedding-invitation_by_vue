@@ -66,47 +66,6 @@
                 </v-btn>
             </template>
         </v-snackbar>
-        <v-dialog
-                transition="dialog-bottom-transition"
-                v-model="isOpenDialog"
-        >
-            <!--<template v-slot:activator="{ on, attrs }">
-                <v-btn
-                        color="primary"
-                        v-bind="attrs"
-                        v-on="on"
-                >From the bottom</v-btn>
-            </template>-->
-            <v-card>
-                <v-toolbar
-                        color="primary"
-                        dark
-                >알림</v-toolbar>
-                <v-card-text>
-                    <div class="subtitle-1 pt-4">캘린더 등록을 위해 구글 로그인과 권한승인을 해주셔야합니다!</div>
-                </v-card-text>
-                <v-card-actions class="justify-end">
-<!--                    <v-spacer></v-spacer>-->
-                    <v-btn
-                            color="blue darken-1"
-                            text
-                            @click="isOpenDialog = false"
-                    >
-                        닫기
-                    </v-btn>
-                    <v-btn
-                            color="blue darken-1"
-                            text
-                            @click="authSignin"
-                    >
-                        구글 인증
-                    </v-btn>
-                </v-card-actions>
-            </v-card>
-            <!--<template v-slot:default="isOpenDialog">
-
-            </template>-->
-        </v-dialog>
     </v-responsive>
 </template>
 
@@ -121,7 +80,6 @@
             snackbarColor: '',
             snackbarText: '',
             map: undefined,
-            isOpenDialog: false,
             isInitializeGoogle: false,
             isAuthSignedIn: false,
         }),
@@ -261,13 +219,10 @@
                 } else {
                     console.log('not isSignined, ', this.isAuthSignedIn)
                     this.authSignin();
-                    // this.isOpenDialog = true;
-                    // gapi.auth2.getAuthInstance().signIn();
                 }
 
             },
             async authSignin() {
-                this.isOpenDialog = false;
                 // eslint-disable-next-line no-undef
                 console.log('before ', gapi.auth2.getAuthInstance().isSignedIn.get())
                 // eslint-disable-next-line no-undef
@@ -287,7 +242,7 @@
             eventCallback(event) {
                 this.snackbarText =  '구글 캘린더에 이벤트가 등록되었어요 :)';
                 this.snackbarColor = 'primary';
-                this.isOpenDialog = true;
+                this.isOpenSnackbar = true;
                 console.log(event.htmlLink);
             },
             handleSignoutClick() {
