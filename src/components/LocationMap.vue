@@ -186,6 +186,7 @@
                 return marker;
             },
             initGoogleCalendarAPI() {
+                console.log('isInitializeGoogle', this.isInitializeGoogle);
                 const CLIENT_ID = '215390870050-722lfan2ekh51le7rsch65dnum8onjm8.apps.googleusercontent.com';
                 const API_KEY = 'AIzaSyDyYUTFYEpqD4c6Okb-qDE42shcSup0POQ';
 
@@ -195,14 +196,13 @@
                 // Authorization scopes required by the API; multiple scopes can be
                 // included, separated by spaces.
                 const SCOPES = "https://www.googleapis.com/auth/calendar";
-
                 // eslint-disable-next-line no-undef
                 gapi.client.init({
                     apiKey: API_KEY,
                     clientId: CLIENT_ID,
                     discoveryDocs: DISCOVERY_DOCS,
                     scope: SCOPES
-                }, () => {
+                }).then(() => {
                     console.info('when Init', this.isAuthSignedIn);
                     this.isInitializeGoogle = true;
                     // eslint-disable-next-line no-undef
