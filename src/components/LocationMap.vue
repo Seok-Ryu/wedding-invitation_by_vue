@@ -36,15 +36,6 @@
                     >
                         카카오맵 보기
                     </v-btn>
-                    <v-btn
-                            class="elevation-0 custom-button"
-                            block color="primary"
-                            :large="true"
-                            v-bind="isInitializeGoogle"
-                            v-on:click="handleSignoutClick"
-                    >
-                        임시로그아웃
-                    </v-btn>
                 </v-col>
             </v-row>
         </v-responsive>
