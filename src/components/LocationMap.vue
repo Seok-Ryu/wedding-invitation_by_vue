@@ -20,6 +20,7 @@
                             block
                             :large="true"
                             color="primary"
+                            v-if="isInitializeGoogle"
                             v-on:click="addNewEvent"
                     >
                         캘린더 등록
@@ -39,6 +40,7 @@
                             class="elevation-0 custom-button"
                             block color="primary"
                             :large="true"
+                            v-if="isInitializeGoogle"
                             v-on:click="handleSignoutClick"
                     >
                         임시로그아웃
@@ -121,6 +123,7 @@
             map: undefined,
             isOpenDialog: false,
             isInitializeGoogle: false,
+            isAuthSignedIn: false,
         }),
         mounted() {
             this.createKakaoMap();
@@ -128,11 +131,6 @@
             gapi.load('client:auth2', this.initGoogleCalendarAPI);
         },
         methods: {
-            isSignined() {
-                // return false;
-                // eslint-disable-next-line no-undef
-                return gapi.auth2.getAuthInstance().isSignedIn.get();
-            },
             createKakaoMap() {
                 this.createMap(LONGITUDE, LATITUDE);
                 // eslint-disable-next-line no-undef
@@ -205,26 +203,37 @@
                     discoveryDocs: DISCOVERY_DOCS,
                     scope: SCOPES
                 }, () => {
-                    // Listen for sign-in state changes.
-                    // eslint-disable-next-line no-undef
-                    // gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-
-                    // Handle the initial sign-in state.
-                    // eslint-disable-next-line no-undef
-                    // updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-                    console.info('google api init');
+                    console.info('when Init', this.isAuthSignedIn);
                     this.isInitializeGoogle = true;
+                    // eslint-disable-next-line no-undef
+                    gapi.auth2.getAuthInstance().isSignedIn.listen(this.setAuthSignedIn);
+
+                    // eslint-disable-next-line no-undef
+                    this.setAuthSignedIn(gapi.auth2.getAuthInstance().isSignedIn.get());
+                    console.info('when success Init', this.isAuthSignedIn);
+                    console.info('google api init', this.isInitializeGoogle);
                 }, (error) => {
-                    console.info('google api fail');
+                    console.info('google api fail', this.isInitializeGoogle);
+                    console.info('when fail Init', this.isAuthSignedIn);
                     console.error(JSON.stringify(error, null, 2));
                     this.isInitializeGoogle = false;
                 });
 
                 console.log('isInitializeGoogle', this.isInitializeGoogle);
             },
+            isSignined() {
+                // return false;
+                // eslint-disable-next-line no-undef
+                return gapi.auth2.getAuthInstance().isSignedIn.get();
+            },
+            setAuthSignedIn (isSignedIn) {
+                this.isAuthSignedIn = isSignedIn;
+            },
             addNewEvent () {
+                console.log('send event', this.isAuthSignedIn)
                 if(this.isSignined()) {
-                    const event = {
+                    console.log('isSignined, ', this.isAuthSignedIn)
+                    /*const event = {
                         summary: '류석 + 오다영 결혼식',
                         location: '용산가족공원, 대한민국 서울특별시 용산구 용산동6가 서빙고로 185',
                         description: '옷차림은 편하게, 마음은 가볍게, 10분일찍 오시면 좋아요',
@@ -250,9 +259,10 @@
                         resource: event
                     });
 
-                    request.execute(this.eventCallback)
+                    request.execute(this.eventCallback)*/
                 } else {
-                    this.isOpenDialog = true;
+                    console.log('not isSignined, ', this.isAuthSignedIn)
+                    // this.isOpenDialog = true;
                     // gapi.auth2.getAuthInstance().signIn();
                 }
 

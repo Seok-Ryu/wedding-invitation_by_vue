@@ -123,6 +123,7 @@
             discoveryDocs: DISCOVERY_DOCS,
             scope: SCOPES
         }).then(function () {
+            console.log('google success')
             // Listen for sign-in state changes.
             // eslint-disable-next-line no-undef
             gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
@@ -133,6 +134,7 @@
             authorizeButton.onclick = handleAuthClick;
             signoutButton.onclick = handleSignoutClick;
         }, function(error) {
+            console.log('google fail')
             appendPre(JSON.stringify(error, null, 2));
         });
     }
