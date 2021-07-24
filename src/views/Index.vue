@@ -8,6 +8,7 @@
         <Gallery></Gallery>
         <Share></Share>
         <Comments></Comments>
+        <Footer></Footer>
     </v-main>
 </template>
 
@@ -20,10 +21,12 @@
     import Story from "@/components/Story";
     import Share from "@/components/Share";
     import Gallery from "@/components/Gallery";
+    import Footer from "@/components/Footer";
 
     export default {
         name: "Index",
         components: {
+            Footer,
             Gallery,
             Share,
             Story,
