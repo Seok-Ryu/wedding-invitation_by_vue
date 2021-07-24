@@ -1,5 +1,5 @@
 <template>
-    <v-main id="privacy">
+    <v-main id="privacy" class="pa-4">
         <h2>개인정보처리방침</h2>
         <p class="ls2 lh6 bs5 ts4">
             <em class="emphasis">
