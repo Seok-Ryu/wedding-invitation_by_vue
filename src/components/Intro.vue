@@ -19,14 +19,14 @@
         name: "Intro",
         methods: {
             getImageSrc() {
-                const lightImage = 'images/day_intro.png';
-                const darkImage = 'images/gallery/p9.jpg';
+                const lightImage = 'https://raw.githubusercontent.com/Seok-Ryu/by_vue/master/public/images/day_intro.png';//'images/day_intro.png';
+                const darkImage = 'https://raw.githubusercontent.com/Seok-Ryu/by_vue/master/public/images/gallery/p9.jpg';//'images/gallery/p9.jpg';
 
                 return isDarkTheme() ? darkImage: lightImage;
             },
             getThumbnailSrc() {
-                const lightImage = 'images/day_intro_min.jpg';
-                const darkImage = 'images/gallery/p9.jpg';
+                const lightImage = 'https://raw.githubusercontent.com/Seok-Ryu/by_vue/master/public/images/day_intro_min.jpg';
+                const darkImage = 'https://raw.githubusercontent.com/Seok-Ryu/by_vue/master/public/images/gallery/p9.jpg';
 
                 return isDarkTheme() ? darkImage: lightImage;
             }

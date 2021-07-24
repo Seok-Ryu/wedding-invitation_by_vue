@@ -47,7 +47,7 @@
 
     const initGalleryData = () => {
         const items = [];
-        const imagePath = 'images/gallery/thumbnails'
+        const imagePath = 'https://raw.githubusercontent.com/Seok-Ryu/by_vue/master/public/images/gallery/thumbnails';//'images/gallery/thumbnails'
         const imageExtension = 'jpg';
 
         for (let i = 1; i <= GALLERY_FILE_LENGTH; i++) {

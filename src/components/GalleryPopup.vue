@@ -33,7 +33,7 @@
 
     const initGalleryData = () => {
         const items = [];
-        const imagePath = 'images/gallery'
+        const imagePath = 'https://raw.githubusercontent.com/Seok-Ryu/by_vue/master/public/images/gallery';//'images/gallery'
         const imageExtension = 'jpg';
 
         for (let i = 1; i <= GALLERY_FILE_LENGTH; i++) {
