@@ -20,7 +20,7 @@
                             block
                             :large="true"
                             color="primary"
-                            v-bind="isInitializeGoogle"
+                            v-if="isInitializeGoogle"
                             v-on:click="onClickCalendarEvent"
                     >
                         캘린더 등록

@@ -43,16 +43,16 @@
 <script>
     import GalleryPopup from "@/components/GalleryPopup";
 
-    const GALLERY_FILE_LENGTH = 7;
+    const GALLERY_FILE_LENGTH = 21;
 
     const initGalleryData = () => {
         const items = [];
-        const imagePath = 'images/gallery'
+        const imagePath = 'images/gallery/thumbnails'
         const imageExtension = 'jpg';
 
         for (let i = 1; i <= GALLERY_FILE_LENGTH; i++) {
             items.push({
-                src: `${imagePath}/p${i}.${imageExtension}`
+                src: `${imagePath}/t${i}.${imageExtension}`
             })
         }
 

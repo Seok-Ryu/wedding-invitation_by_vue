@@ -28,12 +28,12 @@
 </template>
 
 <script>
-    const GALLERY_FILE_LENGTH = 7;
+    const GALLERY_FILE_LENGTH = 21;
 
     const initGalleryData = () => {
         const items = [];
         const imagePath = 'images/gallery'
-        const imageExtension = 'jpg';
+        const imageExtension = 'JPG';
 
         for (let i = 1; i <= GALLERY_FILE_LENGTH; i++) {
             items.push({
