@@ -8,7 +8,7 @@
                 석류 + 다영
             </div>
         </v-responsive>
-        <v-img :src="getImageSrc()" class=""></v-img>
+        <v-img :src="getImageSrc()" :lazy-src="getThumbnailSrc()" class=""></v-img>
     </v-responsive>
 </template>
 
@@ -20,6 +20,12 @@
         methods: {
             getImageSrc() {
                 const lightImage = 'images/day_intro.png';
+                const darkImage = 'images/gallery/p9.jpg';
+
+                return isDarkTheme() ? darkImage: lightImage;
+            },
+            getThumbnailSrc() {
+                const lightImage = 'images/day_intro_min.jpg';
                 const darkImage = 'images/gallery/p9.jpg';
 
                 return isDarkTheme() ? darkImage: lightImage;

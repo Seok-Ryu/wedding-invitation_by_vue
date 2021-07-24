@@ -18,6 +18,7 @@
                     v-for="(item, index) in items"
                     :key="index"
                     :src="item.src"
+                    :lazy-src="item.src"
                     :aspect-ratio="16/9"
                     contain
                     class="carousel-item"
