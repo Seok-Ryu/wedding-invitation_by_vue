@@ -1,5 +1,5 @@
 <template>
-    <div id="gallery-popup" class="content-container pl-8 pr-8">
+    <div id="gallery-popup" class="content-container">
 <!--        <div> {{id}}</div>-->
 <!--        <div> {{model}}</div>-->
         <v-carousel
@@ -23,6 +23,11 @@
                     contain
                     class="carousel-item"
             >
+                <!--<v-img
+                        :src="item.src"
+                        :lazy-src="item.src"
+                        class=""
+                />-->
             </v-carousel-item>
         </v-carousel>
     </div>
@@ -70,7 +75,7 @@
 
 <style scoped lang="scss">
     .content-container {
-        background-color: #FFFEF5;
+        background-color: var(--v-accent-base);
     }
 
     .carousel-container {
