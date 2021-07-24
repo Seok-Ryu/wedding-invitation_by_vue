@@ -6,7 +6,7 @@ module.exports = {
     config
         .plugin('html')
         .tap(args => {
-          args[0].title = "Daliah and SeokRyu Wedding invitation";
+          args[0].title = "Daliah & SeokRyu Wedding";
           return args;
         })
   }

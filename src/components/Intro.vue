@@ -19,8 +19,8 @@
         name: "Intro",
         methods: {
             getImageSrc() {
-                const lightImage = 'images/IMG_7650.png';
-                const darkImage = 'images/IMG_7853.jpg';
+                const lightImage = 'images/day_intro.png';
+                const darkImage = 'images/gallery/p9.jpg';
 
                 return isDarkTheme() ? darkImage: lightImage;
             }

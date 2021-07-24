@@ -4,7 +4,7 @@
 <!--        <div> {{model}}</div>-->
         <v-carousel
                 v-model="itemIndex"
-                hide-delimiter-background
+                hide-delimiters
                 class="carousel-container"
         >
             <!--<v-img
@@ -33,7 +33,7 @@
     const initGalleryData = () => {
         const items = [];
         const imagePath = 'images/gallery'
-        const imageExtension = 'JPG';
+        const imageExtension = 'jpg';
 
         for (let i = 1; i <= GALLERY_FILE_LENGTH; i++) {
             items.push({
