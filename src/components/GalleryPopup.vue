@@ -3,7 +3,7 @@
 <!--        <div> {{id}}</div>-->
 <!--        <div> {{model}}</div>-->
         <v-carousel
-                v-model="targetItemId"
+                v-model="itemIndex"
                 hide-delimiter-background
                 class="carousel-container"
         >
@@ -48,7 +48,7 @@
     export default {
         name: "GalleryPopup",
         props: {
-            targetItemId: {
+            itemIndex: {
                 type: Number,
                 required: true
             },

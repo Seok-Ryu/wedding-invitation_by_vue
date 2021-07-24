@@ -33,7 +33,7 @@
                 v-model="dialogInfo.isVisibleDialog"
         >
             <GalleryPopup
-                    :targetItemId="this.dialogInfo.targetItemId"
+                    :itemIndex="this.dialogInfo.targetItemId"
             >
             </GalleryPopup>
         </v-dialog>
