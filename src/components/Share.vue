@@ -109,7 +109,7 @@
                     content: {
                         title: '류석+오다영 저희 결혼합니다.',
                         description: '2021년 9월 11일 오후 3시 30분, 용산가족공원 버드나무 아래',
-                        imageUrl: 'https://ryuliah.netlify.app/images/IMG_7650.png',
+                        imageUrl: 'https://ryuliah.netlify.app/images/day_intro.png',
                         link: {
                             mobileWebUrl: 'https://ryuliah.netlify.app/#/',
                         },
