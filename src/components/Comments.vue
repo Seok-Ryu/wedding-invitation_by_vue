@@ -5,7 +5,7 @@
             메시지 남기기
         </div>
         <div class="text-type-black text-type-16" ><span class="text-type-olive">SNS로그인</span>으로 편하게 작성하세요</div>
-        <div class="text-type-black text-type-16" >카카오, 네이버, 페이스북, 트위터를 지원합니</div>
+        <div class="text-type-black text-type-16" >카카오, 네이버, 페이스북, 트위터를 지원합니다</div>
         <div id="lv-container" data-id="city" data-uid="MTAyMC81MzYyMy8zMDA5Ng==">
         </div>
     </v-responsive>
