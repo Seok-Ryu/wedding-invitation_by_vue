@@ -71,6 +71,8 @@
         }),
         methods: {
             linkTo() {
+                // eslint-disable-next-line no-undef
+                gtag('event', 'more_story');
                 window.open('https://pastoral-airmail-dda.notion.site/48682e04f2f74fb58fb267da077ffe32', '_self')
             }
         }
