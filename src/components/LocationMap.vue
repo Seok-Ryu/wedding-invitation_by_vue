@@ -174,6 +174,8 @@
                 this.isAuthSignedIn = isSignedIn;
             },
             onClickCalendarEvent() {
+                // eslint-disable-next-line no-undef
+                gtag('event', 'add_calendar');
                 if (this.isSignined()) {
                     this.addNewEvent();
                 } else {
