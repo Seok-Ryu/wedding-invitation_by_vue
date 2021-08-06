@@ -64,4 +64,8 @@
         padding-bottom: 0;
     }
 
+    #container .reply-content {
+        color: var(--v-secondary-base) !important;
+    }
+
 </style>
