@@ -4,7 +4,7 @@
         <div class="groom-container">
             <div class="d-flex icon-container text-type-olive text-type-16">
                 <div class="text-type-16-500">
-                    신랑 류석
+                    {{ $t('view.contact.gloom') }}
                 </div>
                 <div class="icon-area d-flex">
                     <v-btn
@@ -53,26 +53,26 @@
             </div>
             <div class="text-type-black text-type-16">
                 <div class="pt-5">
-                    <span class="pr-4">류근복</span>
+                    <span class="pr-4">{{ $t('view.contact.gloomFather') }}</span>
                     <span style="cursor: pointer;" class="font-weight-bold"
                           v-on:click="linkTo($options.LINK_TYPE.CALL, 'tel:01029504069')"
                     >
-                        010-2950-4069
+                        {{ $t('view.contact.gloomFatherMobile') }}
                     </span>
                 </div>
                 <div class="">
-                    <span class="pr-4">김미자</span>
+                    <span class="pr-4">{{ $t('view.contact.gloomMother') }}</span>
                     <span style="cursor: pointer;" class="font-weight-bold"
                           v-on:click="linkTo($options.LINK_TYPE.CALL, 'tel:01024844069')"
                     >
-                        010-2484-4069
+                        {{ $t('view.contact.gloomMotherMobile') }}
                     </span>
                 </div>
                 <div class="">
                     <span class="text-decoration-underline" style="cursor: pointer;"  v-on:click="copyAccountInfo">
-                        신한 110-180-416877
+                        {{ $t('view.contact.gloomBankAccount') }}
                     </span>
-                    <span>&nbsp;(유석)</span>
+                    <span>&nbsp;{{ $t('view.contact.gloomBankAccountName') }}</span>
                 </div>
             </div>
         </div>
@@ -98,7 +98,7 @@
         <div class="bride-container">
             <div class="d-flex icon-container text-type-olive text-type-16">
                 <div class="text-type-16-500">
-                    신부 오다영
+                    {{ $t('view.contact.bride') }}
                 </div>
                 <div class="icon-area d-flex">
                     <v-btn
@@ -147,32 +147,32 @@
             </div>
             <div class="text-type-black text-type-16">
                 <div class="pt-5">
-                    <span class="pr-4">오문경</span>
+                    <span class="pr-4">{{ $t('view.contact.brideFather') }}</span>
                     <span style="cursor: pointer;" class="font-weight-bold"
                           v-on:click="linkTo($options.LINK_TYPE.CALL, 'tel:01028750246')"
                     >
-                        010-2875-0246
+                        {{ $t('view.contact.brideFatherMobile') }}
                     </span>
                 </div>
                 <div class="name-container">
-                    <span class="pr-4">윤선희</span>
+                    <span class="pr-4">{{ $t('view.contact.brideMother') }}</span>
                     <span style="cursor: pointer;" class="font-weight-bold"
                             v-on:click="linkTo($options.LINK_TYPE.CALL, 'tel:01043230246')"
                     >
-                        010-4323-0246
+                        {{ $t('view.contact.brideMotherMobile') }}
                     </span>
                 </div>
                 <div class="">
                     <span class="text-decoration-underline" style="cursor: pointer;"  v-on:click="copyAccountInfo">
-                        국민 061-21-0263-130
+                        {{ $t('view.contact.brideFatherBankAccount') }}
                     </span>
-                    <span>&nbsp;(오문경)</span>
+                    <span>&nbsp;{{ $t('view.contact.brideFatherBankAccountName') }}</span>
                 </div>
                 <div class="">
                     <span class="text-decoration-underline" style="cursor: pointer;"  v-on:click="copyAccountInfo">
-                        카뱅 3333-04-0840375
+                        {{ $t('view.contact.brideBankAccount') }}
                     </span>
-                    <span>&nbsp;(오다영)</span>
+                    <span>&nbsp;{{ $t('view.contact.brideBankAccountName') }}</span>
                 </div>
             </div>
         </div>

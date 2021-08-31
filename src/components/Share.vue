@@ -3,7 +3,7 @@
 <!--        <v-img src="images/share.png"></v-img>-->
         <div class="divider-bar"></div>
         <div class="title-container text-type-olive text-type-24">
-            공유하기
+            {{ $t('view.share.title') }}
         </div>
         <v-responsive class="d-flex button-container">
             <v-row class="" justify="space-between" cols="12">
@@ -17,7 +17,7 @@
                         <v-icon left>
                             mdi-message-outline
                         </v-icon>
-                        카카오톡
+                        {{ $t('view.share.kakaotalk') }}
                     </v-btn>
                 </v-col>
                 <v-col class="col-6">
@@ -30,7 +30,7 @@
                         <v-icon left>
                             mdi-content-copy
                         </v-icon>
-                        URL 복사
+                        {{ $t('view.share.copyOfUrl') }}
                     </v-btn>
                 </v-col>
             </v-row>

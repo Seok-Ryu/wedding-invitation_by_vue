@@ -2,10 +2,10 @@
     <v-responsive id="comment" class="custom-content-container">
         <div class="divider-bar"></div>
         <div class="title-container text-type-olive text-type-24">
-            메시지 남기기
+            {{ $t('view.comment.title') }}
         </div>
-        <div class="text-type-black text-type-16" ><span class="text-type-olive">SNS로그인</span>으로 편하게 작성하세요</div>
-        <div class="text-type-black text-type-16" >카카오, 네이버, 페이스북, 트위터를 지원합니다</div>
+        <div class="text-type-black text-type-16" ><span class="text-type-olive">{{ $t('view.comment.text_1') }}</span>{{ $t('view.comment.text_2') }}</div>
+        <div class="text-type-black text-type-16" >{{ $t('view.comment.text_3') }}</div>
         <div id="lv-container" data-id="city" data-uid="MTAyMC81MzYyMy8zMDA5Ng==">
         </div>
     </v-responsive>
@@ -51,6 +51,7 @@
             }
         }
     }
+
     // TODO
     // 2. 카카오 페이 계좌이체 링크 가능할까?
     // 3. 사진 편집후 재업로드 필요

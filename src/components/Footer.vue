@@ -6,7 +6,7 @@
                 cols="5"
                 >
                 <router-link to="/privacy" class="privacy_text">
-                    개인정보 처리방침
+                    {{ $t('view.footer.title') }}
                 </router-link>
             </v-col>
             <v-col

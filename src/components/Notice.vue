@@ -3,90 +3,90 @@
 <!--        <v-img src="images/notice.png"></v-img>-->
         <div class="divider-bar"></div>
         <div class="title-container text-type-olive text-type-24">
-            안내사항
+            {{ $t('view.notice.notice') }}
         </div>
         <div class="text-type-black text-type-16">
             <div>
-                공원이므로 옷은 편하게.
+                {{ $t('view.notice.noticeText_1') }}
             </div>
             <div>
-                아이들과 놀 준비, 댕댕이와 산책할 준비는 자유롭게!
+                {{ $t('view.notice.noticeText_2') }}
             </div>
             <div>
-                화환 반입은 어려워요.
+                {{ $t('view.notice.noticeText_3') }}
             </div>
         </div>
         <div class="subtext-container text-type-black text-type-16-500">
-            자차로 오신다면
+            {{ $t('view.notice.byCar') }}
         </div>
         <div class="text-type-black text-type-16">
             <div>
                 <span class="text-type-olive">1 /  </span>
-                <span>주차는 국립중앙박물관 주차장에</span>
+                <span>{{ $t('view.notice.byCarText_1')}}</span>
             </div>
             <div>
                 <span class="text-type-olive">2 /  </span>
-                <span>산책로를 따라 7분정도 걸어오세요.</span>
+                <span>{{ $t('view.notice.byCarText_2')}}</span>
             </div>
             <div>
                 <span class="text-type-olive">3 /  </span>
-                <span>결혼식 접수대에서 주차비를 받습니다.</span>
+                <span>{{ $t('view.notice.byCarText_3')}}</span>
             </div>
         </div>
         <div class="subtext-container text-type-black text-type-16-500">
-            대중교통으로 오신다면
+            {{ $t('view.notice.byPublic') }}
         </div>
         <div class="text-type-black text-type-16">
             <div>
                 <span class="text-type-olive">1 /  </span>
-                <span>이촌역 2번 출구로 나와주세요.</span>
+                <span>{{ $t('view.notice.byPublicText_1') }}</span>
             </div>
             <div>
                 <span class="text-type-olive">2 /  </span>
-                <span>이촌역 2번 출구에서 셔틀버스를 타거나 10분 정도 걸어오세요.</span>
+                <span>{{ $t('view.notice.byPublicText_2') }}</span>
             </div>
         </div>
         <div class="subtext-container text-type-black text-type-16-500">
-            셔틀버스
+            {{ $t('view.notice.byShuttle') }}
         </div>
         <div class="text-type-black text-type-16">
             <div>
-                <span class="text-type-olive">15:00 - 16:00 </span>
-                <span class="text-type-12"> 10분 간격 순환</span>
+                <span class="text-type-olive">{{ $t('view.notice.byShuttleTime_1') }} </span>
+                <span class="text-type-12"> {{ $t('view.notice.byShuttleDuration_1') }}</span>
             </div>
             <div>
-                이촌역  2번 출구  ~ 용산가족공원
+                {{ $t('view.notice.byShuttleRoute_1') }}
             </div>
             <div>
-                <span class="text-type-olive">16:00 - 17:00 </span>
-                <span class="text-type-12"> 20분 간격 순환</span>
+                <span class="text-type-olive">{{ $t('view.notice.byShuttleTime_2') }} </span>
+                <span class="text-type-12"> {{ $t('view.notice.byShuttleDuration_2') }}</span>
             </div>
             <div>
-                용산가족공원 ~ 기와
+                {{ $t('view.notice.byShuttleRoute_2') }}
             </div>
         </div>
         <div class="subtext-container text-type-black text-type-16-500">
-            답례 / 식사
+            {{ $t('view.notice.dining') }}
         </div>
         <div class="text-type-black text-type-16">
             <div>
-                접수대에서 교환권을 지급합니다.
+                {{ $t('view.notice.diningHowUse') }}
             </div>
             <div>
-                <span>- 퇴장시 접수대에서 </span>
-                <span class="text-type-olive">답례품</span>
-                <span>으로 교환</span>
+                <span>{{ $t('view.notice.diningGiftText_1') }} </span>
+                <span class="text-type-olive">{{ $t('view.notice.diningGiftText_2') }}</span>
+                <span>{{ $t('view.notice.diningGiftText_3') }}</span>
             </div>
             <div>
-                <span>- ‘기와’ 에서 </span>
-                <span class="text-type-olive">식권</span>
-                <span>으로 사용</span>
+                <span>{{ $t('view.notice.diningText_1') }} </span>
+                <span class="text-type-olive">{{ $t('view.notice.diningText_2') }}</span>
+                <span>{{ $t('view.notice.diningText_3') }}</span>
             </div>
         </div>
         <div class="location-info">
             <div class="location-sub-area-1 d-flex mb-2 text-type-black text-type-16">
                 <div class="text-type-16-500">
-                    피로연장 ‘기와'
+                    {{ $t('view.notice.restaurant') }}
                 </div>
                 <v-btn
                         color="var(--v-primary-base)"
@@ -96,7 +96,7 @@
                     <v-icon left>
                         mdi-map-marker-circle
                     </v-icon>
-                    지도로 보기
+                    {{ $t('view.notice.onTheMap') }}
                 </v-btn>
                 <!--<div class="d-flex" href='http://kko.to/uepuFiT4o' target="_blank">
                     <v-icon color="primary" class="pr-2">mdi-map-marker-circle</v-icon>
@@ -108,7 +108,7 @@
                    {{address}}
                 </div>
                 <div>
-                    용산역 도보 5분 / 주차 무료
+                    {{ $t('view.notice.restaurantInfo') }}
                 </div>
             </div>
             <v-snackbar
@@ -140,7 +140,7 @@
         name: "Notice",
         computed: {
             address () {
-              return '서울시 용산구 한강로3가 40-946';
+                return this.$t('view.notice.restaurantAddress');
             }
         },
         data: () => ({

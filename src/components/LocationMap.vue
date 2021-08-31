@@ -2,13 +2,13 @@
     <v-responsive id="location_map" class="custom-content-container">
         <div class="divider-bar"></div>
         <div class="text-container-1 text-type-black text-type-16 text-align-left">
-            날씨도, 식순도, 애드리브도 예측할 수 없는 -
+            {{ $t('view.locationMap.description') }}
         </div>
         <div class="text-type-olive text-type-20">
-            21년 9월 11일 오후 3시 30분
+            {{ $t('view.locationMap.date') }}
         </div>
         <div class="text-type-olive text-type-20">
-            용산가족공원 버드나무 아래
+            {{ $t('view.locationMap.location') }}
         </div>
         <div class="map-container" ref="mapContainer">
         </div>
@@ -23,7 +23,7 @@
                             v-if="isInitializeGoogle"
                             v-on:click="onClickCalendarEvent"
                     >
-                        캘린더 등록
+                        {{ $t('view.locationMap.addCalendar') }}
                     </v-btn>
                 </v-col>
                 <v-col class="col-6">
@@ -34,7 +34,7 @@
                             href='http://kko.to/uepuFiT4o'
                             target="_blank"
                     >
-                        카카오맵 보기
+                        {{ $t('view.locationMap.showMap') }}
                     </v-btn>
                 </v-col>
             </v-row>
@@ -53,7 +53,7 @@
                         v-bind="attrs"
                         @click="isOpenSnackbar = false"
                 >
-                    Close
+                    {{ $t('view.locationMap.close') }}
                 </v-btn>
             </template>
         </v-snackbar>
@@ -218,7 +218,7 @@
                 if(this.isSignined()) {
                     this.addNewEvent();
                 } else {
-                    this.snackbarText =  '구글 인증에 실패 했어요 :(';
+                    this.snackbarText = this.$t('view.locationMap.identifyError')
                     this.snackbarColor = 'warning';
                 }
 
@@ -228,7 +228,7 @@
                 console.log('Event: ', event);
 
                 if (!event.htmlLink) {
-                    this.snackbarText =  '이벤트가 등록에 실패했어요 :)';
+                    this.snackbarText = this.$t('view.locationMap.eventCreateError')
                     this.snackbarColor = 'error';
                     this.isOpenSnackbar = true;
 
@@ -236,7 +236,7 @@
                     return;
                 }
 
-                this.snackbarText =  '구글 캘린더에 이벤트가 등록되었어요 :)';
+                this.snackbarText = this.$t('view.locationMap.eventCreateSuccess')
                 this.snackbarColor = 'primary';
                 this.isOpenSnackbar = true;
 

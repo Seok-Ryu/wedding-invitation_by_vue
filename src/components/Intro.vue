@@ -2,10 +2,10 @@
     <v-responsive id="intro" class="custom-content-container">
         <v-responsive class="description-container">
             <div class="title-container text-type-black text-type-16 line-height-24 text-align-center">
-                이제는 말할 수  있다
+                {{ $t('view.intro.header') }}
             </div>
             <div class="text-type-olive text-type-28 text-align-center">
-                석류 + 다영
+                {{ $t('view.intro.GloomAndBride') }}
             </div>
         </v-responsive>
         <v-img :src="getImageSrc()" :lazy-src="getThumbnailSrc()" class=""></v-img>
