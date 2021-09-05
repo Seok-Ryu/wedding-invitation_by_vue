@@ -6,6 +6,12 @@ export default {
             Settings: 'Settings',
             ok: 'OK',
             cancel: 'CANCEL',
+            noticeDialog: {
+                title: '양해 부탁드립니다.',
+                content_1: '9월 3일 발표된 방역지침에 따라 식사를 제공하지 못하게 되었습니다 😭',
+                content_2: '안전한 결혼식을 위해 많은 양해 부탁드립니다.',
+                close: '닫기'
+            }
         },
         locationMap: {
             description: 'Weather and program : unknown',
@@ -20,6 +26,7 @@ export default {
         },
         notice: {
             notice: 'Notice',
+            noticeText_0: 'The restaurant reservation has been canceled.',
             noticeText_1: 'Dress code : casual.',
             noticeText_2: 'Children and pets are welcome.',
             noticeText_3: 'No Wreaths allowed.',

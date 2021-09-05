@@ -5,7 +5,7 @@
                     color="primary"
                     icon
                     outlined
-                    @click="isSettingDialog = true"
+                    @click="isVisibleSettingDialog = true"
             >
                 <v-icon>
                     mdi-cog-outline
@@ -23,7 +23,7 @@
         <v-img :src="getImageSrc()" :lazy-src="getThumbnailSrc()" class=""></v-img>
         <!-- Setting dialog -->
         <v-dialog
-                v-model="isSettingDialog"
+                v-model="isVisibleSettingDialog"
                 min-width="312"
                 max-width="600"
         >
@@ -136,7 +136,7 @@
                     <v-spacer></v-spacer>
                     <v-btn
                             text
-                            @click="isSettingDialog = false"
+                            @click="isVisibleSettingDialog = false"
                     >
                         {{ $t('view.intro.cancel') }}
                     </v-btn>
@@ -147,6 +147,31 @@
                             v-on:click="changeSettings"
                     >
                         {{ $t('view.intro.ok') }}
+                    </v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
+        <v-dialog v-model="isVisibleNoticeDialog"
+                  v-if="this.language === 1"
+                  persistent
+                  max-width="320"
+        >
+            <v-card>
+                <v-card-title class="text-h5">
+                    {{ $t('view.intro.noticeDialog.title')}}
+                </v-card-title>
+                <v-card-text>
+                    {{ $t('view.intro.noticeDialog.content_1')}} <br>
+                    {{ $t('view.intro.noticeDialog.content_2')}}
+                </v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn
+                            color="primary"
+                            text
+                            @click="isVisibleNoticeDialog = false"
+                    >
+                        {{ $t('view.intro.noticeDialog.close') }}
                     </v-btn>
                 </v-card-actions>
             </v-card>
@@ -170,7 +195,8 @@
     export default {
         name: "Intro",
         data: () => ({
-            isSettingDialog: false,
+            isVisibleSettingDialog: false,
+            isVisibleNoticeDialog: true,
             switch1: true,
             theme: convertThemeToNumber(isDarkTheme()),
             language: convertLocaleToNumber(getLocale()),
@@ -207,7 +233,7 @@
                 setTheme(darkTheme)
                 this.$vuetify.theme.dark = darkTheme;
 
-                this.isSettingDialog = false;
+                this.isVisibleSettingDialog = false;
             },
             getImageSrc() {
                 const lightImage = 'https://raw.githubusercontent.com/Seok-Ryu/by_vue/master/public/images/day_intro.png';//'images/day_intro.png';

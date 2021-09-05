@@ -6,6 +6,9 @@
             {{ $t('view.notice.notice') }}
         </div>
         <div class="text-type-black text-type-16">
+            <div class="text-type-olive">
+                * {{ $t('view.notice.noticeText_0') }} *
+            </div>
             <div>
                 {{ $t('view.notice.noticeText_1') }}
             </div>
@@ -83,7 +86,7 @@
                 <span>{{ $t('view.notice.diningText_3') }}</span>
             </div>
         </div>
-        <div class="location-info">
+        <div class="location-info" v-if="false">
             <div class="location-sub-area-1 d-flex mb-2 text-type-black text-type-16">
                 <div class="text-type-16-500">
                     {{ $t('view.notice.restaurant') }}
