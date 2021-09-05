@@ -1,8 +1,4 @@
-export const isMobile = () => {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-};
-
-export const isDarkTheme = () => {
+const isDarkThemeTime = () => {
     const date = new Date();
 
     // date.setHours(10);
@@ -12,6 +8,26 @@ export const isDarkTheme = () => {
     }
 
     return false;
+}
+
+const getLocaleByNavigator =  () => {
+    const temp = navigator.language || navigator.userLanguage;
+    const language = temp.toLowerCase();
+
+    if (language.includes('ko')) {
+        return 'ko'
+    }
+
+    return 'en'
+}
+
+const settings = {
+    isDarkTheme: isDarkThemeTime(),
+    locale: getLocaleByNavigator(),
+}
+
+export const isMobile = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 };
 
 export const isSupportedCopyCommand = () => {
@@ -29,4 +45,21 @@ export const doCopyCommand = (event) => {
     document.body.removeChild(inputElement);
 
     return true;
+}
+
+export const isDarkTheme = () => {
+    return settings.isDarkTheme;
+};
+
+export const getLocale = () => {
+    return settings.locale;
+}
+
+export const setLocale = (_this, locale) => {
+    settings.locale = locale === 'ko' ? 'ko' : 'en';
+    _this.$i18n.locale = settings.locale;
+}
+
+export const setTheme = (isDark) => {
+    settings.isDarkTheme = isDark;
 }

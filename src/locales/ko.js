@@ -3,6 +3,9 @@ export default {
         intro: {
             GloomAndBride: '석류 + 다영',
             header: '이제는 말할 수  있다',
+            Settings: '설정',
+            ok: '확인',
+            cancel: '취소',
         },
         locationMap: {
             description: '날씨도, 식순도, 애드리브도 예측할 수 없는 -',

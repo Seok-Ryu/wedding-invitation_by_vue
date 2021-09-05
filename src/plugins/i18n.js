@@ -1,20 +1,10 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import { ko, en } from '@/locales';
+import { getLocale } from '@/utils';
 
 Vue.use(VueI18n);
 
-
-const getLocale = () => {
-    const temp = navigator.language || navigator.userLanguage;
-    const language = temp.toLowerCase();
-
-    if (language.includes('ko')) {
-        return 'ko'
-    }
-
-    return 'en'
-}
 
 const i18n = new VueI18n({
     locale: getLocale(),

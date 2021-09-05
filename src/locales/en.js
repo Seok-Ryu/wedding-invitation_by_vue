@@ -3,6 +3,9 @@ export default {
         intro: {
             GloomAndBride: 'Seokryu + Daliah',
             header: 'Behold - ',
+            Settings: 'Settings',
+            ok: 'OK',
+            cancel: 'CANCEL',
         },
         locationMap: {
             description: 'Weather and program : unknown',
