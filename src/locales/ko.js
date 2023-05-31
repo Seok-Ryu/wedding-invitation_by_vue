@@ -7,9 +7,9 @@ export default {
             ok: '확인',
             cancel: '취소',
             noticeDialog: {
-                title: '양해 부탁드립니다.',
-                content_1: '9월 3일 발표된 방역지침에 따라 식사를 제공하지 못하게 되었습니다 😭',
-                content_2: '안전한 결혼식을 위해 많은 양해 부탁드립니다.',
+                title: '감사드립니다',
+                content_1: '석류와 다영의 결혼을 축하해 주신 모든 분들께',
+                content_2: '다시 한번 진심어린 감사 드립니다 👍🏻',
                 close: '닫기'
             }
         },
