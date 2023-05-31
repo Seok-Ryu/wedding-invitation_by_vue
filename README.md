@@ -1,4 +1,4 @@
-# vutifytest
+# Wedding invitation
 
 ## Project setup
 ```
